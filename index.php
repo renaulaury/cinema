@@ -33,7 +33,7 @@ if (isset($_GET['action'])) {
     }
 }
 
-
+/*manque un nom de classe ?*/
     public function detActeur($id)
     {
         $pdo = Connect::seConnecter();
