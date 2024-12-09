@@ -88,6 +88,7 @@ SELECT nom,
        TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) AS age_revolu, 
        DATEDIFF(CURDATE(), DATE_ADD(date_naissance, INTERVAL TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) YEAR)) AS age_non_revolu_days,
        IF(DATEDIFF(CURDATE(), DATE_ADD(date_naissance, INTERVAL TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) YEAR)) < 0, 'Non révolu', 'Révolu') AS age_status
+       /*Si la diff entre today et ddn et < 0 alors l age n'est pas révolu sinon il est révolu*/
 FROM personne
 INNER JOIN acteur ON personne.id_personne = acteur.id_personne
 WHERE TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) > 50;
