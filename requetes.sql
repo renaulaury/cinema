@@ -72,5 +72,31 @@ INNER JOIN acteur ON personne.id_personne = acteur.id_personne
 GROUP BY sexe
 
 /*Requête k*/
+SELECT nom, prenom, date_naissance, 
+		CURDATE() AS today, 
+		TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) AS age_revolu, 
+		DATEDIFF(CURDATE(), date_naissance) AS age_non_revolu,
+		(DATEDIFF(CURDATE(), date_naissance) -1 < TIMESTAMPDIFF(YEAR, date_naissance, CURDATE())) AS non_revolu
+FROM personne
+INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+WHERE TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) > 50;
+
+SELECT nom, 
+       prenom, 
+       date_naissance, 
+       CURDATE() AS today, 
+       TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) AS age_revolu, 
+       DATEDIFF(CURDATE(), DATE_ADD(date_naissance, INTERVAL TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) YEAR)) AS age_non_revolu_days,
+       IF(DATEDIFF(CURDATE(), DATE_ADD(date_naissance, INTERVAL TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) YEAR)) < 0, 'Non révolu', 'Révolu') AS age_status
+FROM personne
+INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+WHERE TIMESTAMPDIFF(YEAR, date_naissance, CURDATE()) > 50;
 
 /*Requête l*/
+SELECT nom, prenom, COUNT(film.id_film) AS nb_film
+FROM casting
+INNER JOIN film ON casting.id_film = film.id_film
+INNER JOIN acteur ON casting.id_acteur = acteur.id_acteur
+INNER JOIN personne ON acteur.id_personne = personne.id_personne
+GROUP BY acteur.id_personne, personne.nom, personne.prenom
+HAVING COUNT(film.id_film) >= 3
