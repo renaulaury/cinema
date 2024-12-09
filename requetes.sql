@@ -50,8 +50,16 @@ INNER JOIN role ON casting.id_role = role.id_role
 WHERE personne.id_personne = 2
 
 /*Requête h*/
+SELECT CONCAT(personne.nom, " ", personne.prenom) AS personnalite, film.titre
+FROM casting
+INNER JOIN film ON casting.id_film = film.id_film
+INNER JOIN acteur ON casting.id_acteur = acteur.id_acteur
+INNER JOIN realisateur ON film.id_realisateur = realisateur.id_realisateur
+INNER JOIN personne ON acteur.id_personne = personne.id_personne
+WHERE realisateur.id_personne = acteur.id_personne 
 
 /*Requête i*/
+
 /*Requête j*/
 /*Requête k*/
 /*Requête l*/
