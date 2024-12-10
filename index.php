@@ -1,6 +1,5 @@
 <?php
 
-
 use Controller\cinemaController; /*use les controller*/
 
 /*recup des classes*/
@@ -26,8 +25,6 @@ if (isset($_GET['action'])) {
     }
 }
 
-/* Inclure le template */
-include 'view/template.php';
 ?>
 
 <!-- accueille l'action transmise par l'url -->

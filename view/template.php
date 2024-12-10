@@ -17,14 +17,15 @@
         <nav>
             <img src="./public/img/logo_cinema.png" alt="Logo de l'entreprise Ciné Sphéry">
             <ol>
-                <li>Accueil</li>
-                <li>Fillms</li>
-                <li>Réalisateurs</li>
-                <li>Acteurs</li>
+                <li><a href="./view/accueil.php">Accueil</a></li>
+                <li><a href="index.php?action=listFilms">Films</a></li>
+                <li><a href="./view/listReals.php">Réalisateurs</a></li>
+                <li><a href="./view/listActeurs.php">Acteurs</a></li>
             </ol>
         </nav>
     </header>
 
+    <?= $contenu ?>
 
     <footer>
         <p>Copyright Ciné Sphery - made by Laury with <i class="fa-solid fa-heart"></i></p>

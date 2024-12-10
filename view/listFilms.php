@@ -33,4 +33,4 @@
  <!--Entre les 2 ob sera contenu dans $contenu -->
  <!-- tjs donner valeur a $titre -> <title>$titre</title> -->
  <!-- tjs donner valeur a $titre_sec -> <h2>$titre_sec</h2> -->
- <!-- tjs donner valeur a $contenu -> <?= $contenu ?> -->
+ <!-- tjs donner valeur a $contenu ->  $contenu  -->
