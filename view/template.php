@@ -17,10 +17,10 @@
         <nav>
             <img src="./public/img/logo_cinema.png" alt="Logo de l'entreprise Ciné Sphéry">
             <ol>
-                <li><a href="./view/accueil.php">Accueil</a></li>
+                <li><a href="index.php?action=accueil">Accueil</a></li>
                 <li><a href="index.php?action=listFilms">Films</a></li>
-                <li><a href="./view/listReals.php">Réalisateurs</a></li>
-                <li><a href="./view/listActeurs.php">Acteurs</a></li>
+                <li><a href="index.php?action=listReals">Réalisateurs</a></li>
+                <li><a href="listActeurs.php?action=listActeurs">Acteurs</a></li>
             </ol>
         </nav>
     </header>
