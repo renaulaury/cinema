@@ -1,14 +1,7 @@
-<!-- accueille l'action transmise par l'url -->
-<!-- pour afficher le détail d'un film par exemple, c'est encore une fois 
-l'URL qui fera passer un "id" en paramètre -->
-
-
-
 <?php
 
-/*use les controller*/
 
-use Controller\cinemaController;
+use Controller\cinemaController; /*use les controller*/
 
 /*recup des classes*/
 
@@ -28,18 +21,15 @@ if (isset($_GET['action'])) {
             $ctrlCinema->listFilms();
             break;
         case "detailFilm":
-            $ctrlCinema->detailFilms($id);
+            //$ctrlCinema->detailFilms($id);
             break;
     }
 }
 
-/*manque un nom de classe ?*/
-    public function detActeur($id)
-    {
-        $pdo = Connect::seConnecter();
-        $requete = $pdo->prepare("SELECT * FROM acteur WHERE id_acteur = :id"); //prepare car on dde l'id $id
-        $requete->execute(["id" => $id]);
-        require "view/acteur/detailActeur.php";
-    }
-}
+/* Inclure le template */
+include 'view/template.php';
 ?>
+
+<!-- accueille l'action transmise par l'url -->
+<!-- pour afficher le détail d'un film par exemple, c'est encore une fois 
+l'URL qui fera passer un "id" en paramètre -->

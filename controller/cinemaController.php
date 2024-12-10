@@ -1,8 +1,6 @@
-<!-- ensemble des requêtes -->
-
 <?php
-// connexion
-namespace Controller;
+
+namespace Controller; // connexion
 
 use Model\Connect;
 
@@ -19,3 +17,5 @@ class cinemaController
         require "view/listFilms.php"; //necessaire pour récuperer la vue qui nous intérésse
     }
 }
+
+// ensemble des requêtes 
