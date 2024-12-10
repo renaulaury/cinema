@@ -7,6 +7,8 @@
          <tr>
              <th>TITRE</th>
              <th>ANNEE SORTIE</th>
+             <th>GENRE</th>
+
          </tr>
      </thead>
 
@@ -14,6 +16,7 @@
          <?php
             foreach ($requete->fetchAll() as $film) { ?>
              <tr>
+                 <td><?= $film["libelle_genre"] ?></td>
                  <td><?= $film["titre"] ?></td>
                  <td><?= $film["date_sortie_fr"] ?></td>
              </tr>
@@ -24,7 +27,6 @@
  <?php
 
     $titre = "Liste des films";
-    $titre_sec = "Liste des films";
     $contenu = ob_get_clean(); //Fin de la vue 
     require "view/template.php";
 
