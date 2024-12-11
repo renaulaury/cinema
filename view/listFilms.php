@@ -16,9 +16,9 @@
          <?php
             foreach ($requete->fetchAll() as $film) { ?>
              <tr>
+                 <td><a href="index.php?action=detFilm?$id"><?=$film["titre"] ?></a></td>
+                 <td><?= $film["release_date"] ?></td>
                  <td><?= $film["libelle_genre"] ?></td>
-                 <td><?= $film["titre"] ?></td>
-                 <td><?= $film["date_sortie_fr"] ?></td>
              </tr>
          <?php } ?>
      </tbody>

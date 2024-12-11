@@ -18,7 +18,7 @@
             <tr>
                 <td><?= $real["nom"] ?></td>
                 <td><?= $real["prenom"] ?></td>
-                <td><?= $real["date_naissance"] ?></td>
+                <td><?= $real["birth_date"] ?></td>
             </tr>
         <?php } ?>
     </tbody>

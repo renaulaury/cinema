@@ -14,7 +14,7 @@
 
      <tbody>
          <?php
-            foreach ($requete->fetch($id) as $film) { ?>
+            foreach ($requete->fetchAll() as $film) { ?>
              <tr>
                  <td><?= $film["titre"] ?></td>
                  <td><?= $film["release_date"] ?></td>

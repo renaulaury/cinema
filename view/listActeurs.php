@@ -18,7 +18,7 @@
             <tr>
                 <td><?= $acteur["nom"] ?></td>
                 <td><?= $acteur["prenom"] ?></td>
-                <td><?= $acteur["date_naissance"] ?></td>
+                <td><?= $acteur["birth_date"] ?></td>
             </tr>
         <?php } ?>
     </tbody>
