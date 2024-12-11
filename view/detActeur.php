@@ -1,18 +1,19 @@
  <?php 
  ob_start();
- $real = $requete1->fetch();
+ $actor = $requete1->fetch();
  ?> <!--Début de la vue -->
 
-<div>Info real</div>
+<div>Info acteur</div>
 
-    <p><?= $real["name_real"] ?></p>
-    <p><?= $real["birth_date"] ?></p>
+    <p><?= $actor["name_acteur"] ?></p>
+    <p><?= $actor["birth_date"] ?></p>
 
     <div>Info filmographie</div>
 <?php
 foreach($requete2->fetchAll() as $info) { ?>
-    <p><?= $info["titre"] ?></p>
-    <p><?= $info["tous_genre"] ?></p>
+    <p><a href="index.php?action=detFilm&id=<?= $info["id_film"] ?>"><?= $info["titre"] ?></a></p>
+    <p><a href="index.php?action=detGenre&id=<?= $info["id_genre"] ?>"><?= $info["tous_genre"] ?></a></p>
+    <p><?= $info["personnage"] ?></p>
     <p><?= $info["affiche"] ?></p>
  <?php } ?>
  <?php

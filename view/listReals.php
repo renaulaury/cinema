@@ -2,27 +2,13 @@
 
 <p>Il y a <?= $requete->rowCount() ?> réalisateurs.</p>
 
-<table>
-    <thead>
-        <tr>
-            <th>NOM</th>
-            <th>PRENOM</th>
-            <th>DATE DE NAISSANCE</th>
 
-        </tr>
-    </thead>
-
-    <tbody>
         <?php
         foreach ($requete->fetchAll() as $real) { ?>
-            <tr>
-                <td><?= $real["nom"] ?></td>
-                <td><?= $real["prenom"] ?></td>
-                <td><?= $real["birth_date"] ?></td>
-            </tr>
+                <a href="index.php?action=detReal&id=<?= $real["id_realisateur"] ?>"><?= $real["name_real"] ?></a></p>
+                     
         <?php } ?>
-    </tbody>
-</table>
+
 
 <?php
 
