@@ -1,21 +1,21 @@
- <?php 
- ob_start();
- ?> <!--Début de la vue -->
+ <?php
+   ob_start();
+   ?> <!--Début de la vue -->
 
 
-    <div>Info filmographie</div>
-<?php
-foreach($requete->fetchAll() as $genre) { ?>
-    <p><?= $genre["titre"] ?></p>
-    <p><?= $genre["affiche"] ?></p>
+ <div>Info filmographie</div>
+ <?php
+   foreach ($requete->fetchAll() as $film) { ?>
+    <p><a href="index.php?action=detFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a></p>
+    <p><?= $film["affiche"] ?></p>
  <?php } ?>
  <?php
 
-    $titre = "Genre : ";
-    $contenu = ob_get_clean(); //Fin de la vue 
-    require "view/template.php";
+   $titre = "Genre : ";
+   $contenu = ob_get_clean(); //Fin de la vue 
+   require "view/template.php";
 
-    ?>
+   ?>
 
  <!--Entre les 2 ob sera contenu dans $contenu -->
  <!-- tjs donner valeur a $titre -> <title>$titre</title> -->

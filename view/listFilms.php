@@ -1,6 +1,9 @@
- <?php ob_start() ?> <!--Début de la vue -->
+ <?php
+    ob_start();
+    $film = $requete->fetch();
+    ?> <!--Début de la vue -->
 
- <p>Il y a <?= $requete->rowCount() ?> films</p>
+ <p class="nb">Il y a <?= $requete->rowCount() ?> films.</p>
 
  <table>
      <thead>
@@ -8,7 +11,6 @@
              <th>TITRE</th>
              <th>ANNEE SORTIE</th>
              <th>GENRE</th>
-
          </tr>
      </thead>
 
@@ -16,9 +18,13 @@
          <?php
             foreach ($requete->fetchAll() as $film) { ?>
              <tr>
-                 <td><a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>"><?=$film["titre"] ?></a></td>
+                 <td><a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>"><?= $film["titre"] ?></a></td>
                  <td><?= $film["release_date"] ?></td>
-                 <td><?= $film["tous_genre"] ?></td>
+                 <?php
+                    foreach ($requete2->fetchAll() as $genre) { ?>
+                     <td><a href="index.php?action=detGenre&id=<?= $genre["id_genre"] ?>"><?= $genre["libelle_genre"] ?></a> </td>
+                 <?php } ?>
+
              </tr>
          <?php } ?>
      </tbody>

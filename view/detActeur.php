@@ -1,24 +1,24 @@
- <?php 
- ob_start();
- $actor = $requete1->fetch();
- ?> <!--Début de la vue -->
+ <?php
+    ob_start();
+    $actor = $requete1->fetch();
+    ?> <!--Début de la vue -->
 
-<div>Info acteur</div>
+ <div>Info acteur</div>
 
-    <p><?= $actor["name_acteur"] ?></p>
-    <p><?= $actor["birth_date"] ?></p>
+ <p><?= $actor["name_acteur"] ?></p>
+ <p><?= $actor["birth_date"] ?></p>
 
-    <div>Info filmographie</div>
-<?php
-foreach($requete2->fetchAll() as $info) { ?>
-    <p><a href="index.php?action=detFilm&id=<?= $info["id_film"] ?>"><?= $info["titre"] ?></a></p>
-    <p><a href="index.php?action=detGenre&id=<?= $info["id_genre"] ?>"><?= $info["tous_genre"] ?></a></p>
-    <p><?= $info["personnage"] ?></p>
-    <p><?= $info["affiche"] ?></p>
+ <div>Info filmographie</div>
+ <?php
+    foreach ($requete2->fetchAll() as $info) { ?>
+     <p><a href="index.php?action=detFilm&id=<?= $info["id_film"] ?>"><?= $info["titre"] ?></a></p>
+     <p><a href="index.php?action=detGenre&id=<?= $info["id_genre"] ?>"><?= $info["tous_genre"] ?></a></p>
+     <p><?= $info["personnage"] ?></p>
+     <p><?= $info["affiche"] ?></p>
  <?php } ?>
  <?php
 
-    $titre = "Détail de la filmographie de";
+    $titre = "Filmographie de " . $actor["name_acteur"];
     $contenu = ob_get_clean(); //Fin de la vue 
     require "view/template.php";
 

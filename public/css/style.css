@@ -3,6 +3,7 @@
     padding: 0;
     /* background-color: red; */
     color: whitesmoke;
+    font-size: small;
 }
 
 body {
@@ -56,6 +57,10 @@ main {
 
 h1 {
     text-align: center;
+    padding-bottom: 3%;
+}
+
+.nb {
     padding-bottom: 3%;
 }
 

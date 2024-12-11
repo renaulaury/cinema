@@ -16,6 +16,9 @@ $id = (isset($_GET['id'])) ? $_GET['id'] : null; //si existe ds l url alors $id=
 /*init de l'action*/
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
+        case "accueil":
+            $ctrlCinema->accueil();
+            break;
         case "listFilms":
             $ctrlCinema->listFilms();
             break;
@@ -24,7 +27,7 @@ if (isset($_GET['action'])) {
             break;
         case "listReals":
             $ctrlCinema->listReals();
-            break;        
+            break;
         case "detReal":
             $ctrlCinema->detReal($id);
             break;
@@ -46,7 +49,7 @@ if (isset($_GET['action'])) {
         case "detRole":
             $ctrlCinema->detRole($id);
             break;
-}
+    }
 }
 
 ?>
