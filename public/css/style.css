@@ -64,6 +64,10 @@ h1 {
     padding-bottom: 3%;
 }
 
+img {
+    width:20%;
+}
+
 /*Footer*/
 footer {
     padding: 2%;

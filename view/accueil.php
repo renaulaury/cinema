@@ -35,6 +35,7 @@ $carrousel = $requete->fetch();
 
         <p><a href="index.php?action=listReals">>Voir plus</a></p>
     </div>
+
 </section>
 
 

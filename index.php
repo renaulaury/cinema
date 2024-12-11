@@ -13,6 +13,19 @@ $ctrlCinema = new cinemaController();
 
 $id = (isset($_GET['id'])) ? $_GET['id'] : null; //si existe ds l url alors $id=get sinon $id=null
 
+
+// Pb dans listFilm : affichage en boucle d'un meme film
+//Pb dans accueil : secion 1+ req 1 ok mais avec la 2 > bug
+//Manque dans detRole : nom de l'acteur + liens
+
+
+
+
+
+
+
+
+
 /*init de l'action*/
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {

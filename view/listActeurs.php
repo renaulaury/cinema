@@ -4,12 +4,13 @@
 
 
 
-        <?php
-        foreach ($requete->fetchAll() as $acteur) { ?>
-      
-                <p><a href="index.php?action=detActeur&id=<?= $acteur["id_acteur"] ?>"><?= $acteur["name_actor"] ?></a></p>
-            
-        <?php } ?>
+<?php
+foreach ($requete->fetchAll() as $actor) { ?>
+
+        <p><a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a></p>
+        <img src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
+
+<?php } ?>
 
 
 <?php

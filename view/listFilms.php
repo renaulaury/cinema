@@ -5,30 +5,23 @@
 
  <p class="nb">Il y a <?= $requete->rowCount() ?> films.</p>
 
- <table>
-     <thead>
-         <tr>
-             <th>TITRE</th>
-             <th>ANNEE SORTIE</th>
-             <th>GENRE</th>
-         </tr>
-     </thead>
+ <!-- Ici mon pb est que ma 2e boucle, boucle sur tous les genres et non
+  sur les genres du film en cours -->
+ <?php
+    foreach ($requete->fetchAll() as $film) { ?>
+     <div>
+         <p><a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>"><?= $film["titre"] ?></a></p>
+         <p><?= $film["release_date"] ?></p>
+         <p><img src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
 
-     <tbody>
          <?php
-            foreach ($requete->fetchAll() as $film) { ?>
-             <tr>
-                 <td><a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>"><?= $film["titre"] ?></a></td>
-                 <td><?= $film["release_date"] ?></td>
-                 <?php
-                    foreach ($requete2->fetchAll() as $genre) { ?>
-                     <td><a href="index.php?action=detGenre&id=<?= $genre["id_genre"] ?>"><?= $genre["libelle_genre"] ?></a> </td>
-                 <?php } ?>
+            foreach ($requete2->fetchAll() as $genre) { ?>
+             <p><a href="index.php?action=detGenre&id=<?= $genre["id_genre"] ?>"><?= $genre["libelle_genre"] ?></a> </p>
 
-             </tr>
          <?php } ?>
-     </tbody>
- </table>
+     </div>
+ <?php } ?>
+
 
  <?php
 
