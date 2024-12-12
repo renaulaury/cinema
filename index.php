@@ -1,6 +1,12 @@
 <?php
 
 use Controller\CinemaController; /*use les controller*/
+use Controller\AccueilController;
+use Controller\FilmController;
+use Controller\RealController;
+use Controller\ActeurController;
+use Controller\GenreController;
+use Controller\RoleController;
 
 /*recup des classes*/
 
@@ -10,6 +16,12 @@ spl_autoload_register(function ($class_name) {
 
 /*instanciation du controller*/
 $ctrlCinema = new CinemaController();
+$ctrlAccueil = new AccueilController();
+$ctrlFilm = new FilmController();
+$ctrlReal = new RealController();
+$ctrlActeur = new ActeurController();
+$ctrlGenre = new GenreController();
+$ctrlRole = new RoleController();
 
 $id = (isset($_GET['id'])) ? $_GET['id'] : null; //si existe ds l url alors $id=get sinon $id=null
 
@@ -24,47 +36,56 @@ $id = (isset($_GET['id'])) ? $_GET['id'] : null; //si existe ds l url alors $id=
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
         case "accueil":
-            $ctrlCinema->accueil();
+            $ctrlAccueil->accueil();
             break;
+
         case "listFilms":
-            $ctrlCinema->listFilms();
+            $ctrlFilm->listFilms();
             break;
         case "detFilm":
-            $ctrlCinema->detFilm($id);
+            $ctrlFilm->detFilm($id);
             break;
+        case "addFilm":
+            $ctrlFilm->addFilm();
+            break;
+
         case "listReals":
-            $ctrlCinema->listReals();
+            $ctrlReal->listReals();
             break;
         case "detReal":
-            $ctrlCinema->detReal($id);
-            break;
-        case "listActeurs":
-            $ctrlCinema->listActeurs();
-            break;
-        case "detActeur":
-            $ctrlCinema->detActeur($id);
-            break;
-        case "listGenres":
-            $ctrlCinema->listGenres();
-            break;
-        case "detGenre":
-            $ctrlCinema->detGenre($id);
-            break;
-        case "listRoles":
-            $ctrlCinema->listRoles();
-            break;
-        case "detRole":
-            $ctrlCinema->detRole($id);
-            break;
-        case "addGenre":
-            $ctrlCinema->addGenre();
+            $ctrlReal->detReal($id);
             break;
         case "addReal":
-            $ctrlCinema->addReal();
+            $ctrlReal->addReal();
             break; 
-        case "addFilm":
-            $ctrlCinema->addFilm();
-            break;  
+
+        case "listActeurs":
+            $ctrlActeur->listActeurs();
+            break;
+        case "detActeur":
+            $ctrlActeur->detActeur($id);
+            break;
+
+        case "listGenres":
+            $ctrlGenre->listGenres();
+            break;
+        case "detGenre":
+            $ctrlGenre->detGenre($id);
+            break;
+        case "addGenre":
+            $ctrlGenre->addGenre();
+            break;
+
+        case "listRoles":
+            $ctrlRole->listRoles();
+            break;
+        case "detRole":
+            $ctrlRole->detRole($id);
+            break;
+
+       
+           
+          
     }
 }
 
