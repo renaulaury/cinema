@@ -7,7 +7,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/css/template.css">
+    <link rel="stylesheet" href="./public/css/accueil.css">
+    <link rel="stylesheet" href="./public/css/listFilms.css">
+    <link rel="stylesheet" href="./public/css/detFilms.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Ciné Sphery</title>
@@ -34,6 +37,7 @@
             <?= $contenu ?>
         </main>
     </div>
+
     <footer>
         <p>Copyright Ciné Sphery - made by Laury with <i class="fa-solid fa-heart"></i></p>
     </footer>

@@ -1,80 +1,97 @@
-* {
+ /*Généraux*/ 
+ * {
+    height: auto;
+    width:auto;
     margin: 0;
     padding: 0;
     /* background-color: red; */
     color: whitesmoke;
-    font-size: small;
 }
 
 body {
-    width: 100%;
-    height: auto;
     background-color: #1e1e1e;
     font-family: 'Rockwell', arial;
-}
+    font-size: 1em;
+    display: flex;           
+    flex-direction: column;
+} 
 
 #container {
     display: flex;
 }
 
+a {    
+    text-decoration:none;
+}
+
+a:hover {
+    padding:1%;
+    text-decoration: underline;
+}
+
+h1 {
+    font-family: 'Lobster two', arial;
+    text-align: center;
+    padding-bottom: 3%;
+}
+
+
+
 /*header*/
 
 header {
     max-width:20%;
+    max-height: 100%;
 }
 
 nav {
     font-family: 'Lobster two', arial;
     width: 100%;
-    height: 40em;
+    height: 55%;
     background: linear-gradient(to right, #d9d9d9 0%, #1e1e1e 66%);
     border-bottom-right-radius: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20%;
+    gap: 10%; 
 }
 
 nav img {
-    width : 95%;
-    padding: 5%;
+    padding: 6%;
 }
 
 nav ol {
-    height: 40%;
-    list-style-type: none;   
+    list-style-type: none;  
 }
 
-nav ol li {
+nav li {
     padding: 25% 0;
-}
+    height: 10%;
+} 
 
-/*Main*/
+
+
+/* input, button, select, option {
+    padding:1%;
+    color:#1e1e1e;
+} */
+
+/*main*/
 main {
-    padding: 3%;
-    width: 80%;
-}
-
-h1 {
-    text-align: center;
-    padding-bottom: 3%;
-}
-
-.nb {
-    padding-bottom: 3%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 5% 0 5%;
+    height: auto;
 }
 
 img {
     height:150px;
 }
 
-input, button, select, option {
-    padding:1%;
-    color:#1e1e1e;
-}
-
 /*Footer*/
 footer {
+    height: auto;
     padding: 2%;
     font-size: 0.8em;
     background: linear-gradient(to top, #d9d9d9 0%, #1e1e1e 66%);
@@ -84,33 +101,5 @@ footer {
 .fa-heart {
     color: rgb(236, 13, 50);
 }
-
-/*Accueil*/
-
-.accueil {
-    padding-top: 10%;
-}
-
-.acc {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.acc_group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;    
-    width: 30%;
-    padding:5% 0;
-}
-
-.acc_group a {
-    padding-bottom: 10%;
-    text-align: center;
-}
-
-/*Films*/
 
 

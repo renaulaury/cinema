@@ -1,0 +1,33 @@
+.section_acc {
+    padding-bottom: 10%; 
+}
+
+.titre_acc {
+    padding-bottom: 3%;
+}
+
+.acc {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 5%;
+}
+
+
+.acc_group {
+    display: grid; 
+    grid-template-rows: 50px 1fr; 
+    text-align: center; 
+}
+
+
+
+
+
+
+
+
+
+
+
+

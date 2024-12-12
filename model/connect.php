@@ -7,7 +7,7 @@ namespace Model; // namespace permet de use la classe sans connaitre son emplace
 abstract class Connect
 {
     const HOST = 'localhost';
-    const DB = 'cinemalily';
+    const DB = 'cinema';
     const USER = 'root';
     const PASS = '';
 
