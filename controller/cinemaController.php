@@ -279,6 +279,17 @@ class CinemaController
 
         require "view/detRole.php"; //necessaire pour récuperer la vue qui nous intérésse
     }
+
+    // Gestion du formulaire
+    public function addGenre()
+    {
+       if (isset($_POST['submit']))  {
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+       }
+       
+       require "view/addGenre.php";
+    }
+
 }
 
 // ensemble des requêtes 

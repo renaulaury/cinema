@@ -9,11 +9,7 @@
                      
         <?php } ?>
 
-        <form action="CinemaController.php" method="post">
-                <label for="genre">Genre :</label>
-                <input type="text" id="genre" name="genre"></input>
-                <input type="submit" value="Valider">
-        </form>
+        <button onclick="window.location.href='index.php?action=addGenre';">Ajouter un genre</button>
 
 <?php
 

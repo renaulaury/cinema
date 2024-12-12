@@ -56,6 +56,12 @@ if (isset($_GET['action'])) {
         case "detRole":
             $ctrlCinema->detRole($id);
             break;
+        case "addGenre":
+            $ctrlCinema->addGenre();
+            break;
+        
+        
+       
     }
 }
 
