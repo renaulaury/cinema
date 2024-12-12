@@ -6,9 +6,11 @@
  <div>Info du film</div>
  <?php
    foreach ($requete->fetchAll() as $role) { ?>
-    <p><?= $role["titre"] ?></p>
-    <p><?= $role["tous_genre"] ?></p>
-    <p><img src="<?= $role["affiche"] ?>" alt="Affiche du film . $role['titre']" /></p>
+      <p><?= $role["personnage"] ?></p>
+      <p><a href="index.php?action=detActeur&id=<?= $role["id_acteur"] ?>"><?= $role["name_actor"] ?></a></p>
+      <p><a href="index.php?action=detFilm&id=<?= $role["id_film"] ?>"><?= $role["titre"] ?></a></p>
+      <p><?= $role["tous_genre"] ?></p>
+      <p><img src="<?= $role["affiche"] ?>" alt="Affiche du film . $role['titre']" /></p>
 
  <?php } ?>
  <?php

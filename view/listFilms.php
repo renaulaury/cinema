@@ -11,14 +11,9 @@
     foreach ($requete->fetchAll() as $film) { ?>
      <div>
          <p><a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>"><?= $film["titre"] ?></a></p>
+         <p><?= $film["tous_genre"] ?> </p>
          <p><?= $film["release_date"] ?></p>
-         <p><img src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
-
-         <?php
-            foreach ($requete2->fetchAll() as $genre) { ?>
-             <p><a href="index.php?action=detGenre&id=<?= $genre["id_genre"] ?>"><?= $genre["libelle_genre"] ?></a> </p>
-
-         <?php } ?>
+         <p><img src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>         
      </div>
  <?php } ?>
 

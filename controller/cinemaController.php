@@ -18,41 +18,46 @@ class CinemaController
             affiche,
             CONCAT(DAY(film.date_sortie_fr), '-', MONTH(film.date_sortie_fr), '-', YEAR(film.date_sortie_fr)) AS release_date
         FROM film        
-        GROUP BY film.id_film, film.titre
+        LIMIT 4
         ");
 
         $requete2 = $pdo->query("
-        SELECT CONCAT(personne.prenom, ' ',personne.nom) AS name_real,	
+        SELECT realisateur.id_realisateur,
+                CONCAT(personne.prenom, ' ',personne.nom) AS name_real,	
                 photo
         FROM personne
-        INNER JOIN realisateur ON personne.id_realisateur = personne.id_realisateur
-        INNER JOIN acteur ON personne.id_acteur = acteur.id_personne
+        INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
+        ");
+
+        $requete3 = $pdo->query("
+        SELECT acteur.id_acteur,
+                CONCAT(personne.prenom, ' ',personne.nom) AS name_acteur,	
+                photo
+        FROM personne
+        INNER JOIN acteur ON personne.id_personne = acteur.id_personne
         ");
 
         require "view/accueil.php"; //necessaire pour récuperer la vue qui nous intérésse
     }
+    
 
     public function listFilms()
     {
         $pdo = Connect::seConnecter();
         $requete = $pdo->query("
-        SELECT  		
+          SELECT  		
             film.id_film, 
             film.titre, 
+            GROUP_CONCAT(genre.libelle_genre) AS tous_genre,
             affiche,
             CONCAT(DAY(film.date_sortie_fr), '-', MONTH(film.date_sortie_fr), '-', YEAR(film.date_sortie_fr)) AS release_date
         FROM film        
+        INNER JOIN genre_film ON film.id_film = genre_film.id_film
+        INNER JOIN genre ON genre_film.id_genre = genre.id_genre
         GROUP BY film.id_film, film.titre
         ");
 
-        $requete2 = $pdo->prepare("
-        SELECT genre.id_genre, genre.libelle_genre
-        FROM genre
-        INNER JOIN genre_film ON genre.id_genre = genre_film.id_genre
-        ");
-        $requete2->execute();
-
-        require "view/listFilms.php"; //necessaire pour récuperer la vue qui nous intérésse
+       require "view/listFilms.php"; //necessaire pour récuperer la vue qui nous intérésse
     }
 
     public function detFilm($id)
@@ -248,14 +253,26 @@ class CinemaController
     {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-            SELECT  titre, affiche, GROUP_CONCAT(libelle_genre) AS tous_genre
+             SELECT  role.id_role, film.id_film, acteur.id_acteur,
+                    personnage,
+                    titre, 
+                    affiche, 
+                    CONCAT(personne.prenom, ' ', personne.nom) AS name_actor,
+                    GROUP_CONCAT(libelle_genre) AS tous_genre
             FROM film
             INNER JOIN genre_film ON film.id_film = genre_film.id_film
             INNER JOIN genre ON genre_film.id_genre = genre.id_genre
             INNER JOIN casting ON film.id_film = casting.id_film
             INNER JOIN role ON casting.id_role = role.id_role
-            WHERE role.id_role = :id
-            GROUP BY film.titre, film.id_film
+            INNER JOIN acteur ON casting.id_acteur = acteur.id_acteur
+            INNER JOIN personne ON acteur.id_personne = personne.id_personne
+            WHERE role.id_role = :id           
+            GROUP BY film.titre, 
+                    film.id_film, 
+                    role.id_role,
+                    personnage,
+                    titre, name_actor,
+                    affiche, film.id_film, acteur.id_acteur
         ");
         $requete->execute(["id" => $id]);
 

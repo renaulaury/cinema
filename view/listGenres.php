@@ -9,8 +9,14 @@
                      
         <?php } ?>
 
+        <form action="CinemaController.php" method="post">
+                <label for="genre">Genre :</label>
+                <input type="text" id="genre" name="genre"></input>
+                <input type="submit" value="Valider">
+        </form>
 
 <?php
+
 
 $titre = "Liste des genres";
 $contenu = ob_get_clean(); //Fin de la vue 
