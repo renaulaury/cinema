@@ -7,6 +7,20 @@ use Model\Connect;
 class GenreController
 
 {
+    public function listGenres()
+    {
+        $pdo = Connect::seConnecter();
+        // $requete = $pdo->prepare("SELECT * FROM acteur WHERE id_acteur = :id"); //prepare car on dde l'id $id
+        // $requete->execute(["id" => $id]);
+        $requete = $pdo->query("
+            SELECT  genre.id_genre, libelle_genre               
+            FROM genre
+        ");
+
+        require "view/listGenres.php";
+    }
+
+    
     public function detGenre($id)
     {
         $pdo = Connect::seConnecter();
@@ -46,6 +60,7 @@ class GenreController
        require "view/addGenre.php";
     }
 
+   
     
 }
 

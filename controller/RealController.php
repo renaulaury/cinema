@@ -90,7 +90,7 @@ class RealController
 
                 $requete1->execute(["idPersonne" => $idPersonne]);
 
-                // requete insert ajouter le réalisateur
+                
 
                 header("Location: index.php?action=listReals");
                 exit();

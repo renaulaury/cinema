@@ -68,7 +68,7 @@ img {
     height:150px;
 }
 
-input, button {
+input, button, select, option {
     padding:1%;
     color:#1e1e1e;
 }

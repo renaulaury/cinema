@@ -77,38 +77,55 @@ class FilmController
     {
         $pdo = Connect::seConnecter();
 
-       if (isset($_POST['submit']))  {
+        $requete = $pdo->query("
+             SELECT  realisateur.id_realisateur,
+                CONCAT(personne.prenom, ' ', personne.nom) AS name_real                
+            FROM personne
+            INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
+            ");
+
+        $requete1 = $pdo->query("
+            SELECT  genre.id_genre, libelle_genre               
+            FROM genre
+        ");
+
+        if (isset($_POST['submit']))  {
             $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dds_fr = filter_input(INPUT_POST, 'dds_fr', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $duree = filter_input(INPUT_POST, 'duree', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $textarea = filter_input(INPUT_POST, 'textarea', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $url_affiche = filter_input(INPUT_POST, 'url_affiche', FILTER_VALIDATE_URL);
+            $liste_real = filter_input(INPUT_POST, 'liste_real', FILTER_VALIDATE_URL);
+            $genre = filter_input(INPUT_POST, 'genre', FILTER_VALIDATE_URL);
 
-        if ($titre && $dds_fr && $duree && $textarea && $note && $url_affiche) {
-            $requete = $pdo->prepare("
-             SELECT  realisateur.id_realisateur,
-                photo,
-                CONCAT(personne.prenom, ' ', personne.nom) AS name_real                
-            FROM personne
-            INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
-            ");
+        if ($titre && $dds_fr && $duree && $textarea &&$note && $url_affiche && 
+        $liste_real && $genre) {      
+            $requete2 = $pdo->prepare("
+            INSERT INTO film (titre, date_sortie_fr, duree, synopsis, note, affiche, id_realisateur)
+            VALUES (:titre, :dds_fr, :duree, :textarea, :note, :affiche, :id_realisateur)
+            ");            
 
-        $requete->execute([
-            "titre" => $titre,
-            "dds_fr" => $dds_fr,
-            "duree" => $duree,
-            "textarea" => $textarea,
-            "note" => $note,
-            "url_affiche" => $url_affiche            
-            ]);
+            $requete2->execute([
+                "titre" => $titre,
+                "date_sortie_fr" => $dds_fr,
+                "duree" => $duree,
+                "synopsis" => $textarea,
+                "note" => $note,
+                "affiche" => $url_affiche,
+                "liste_real" => $liste_real,  
+                "genre" => $genre          
+                ]);
 
-        header("Location: index.php?action=listFilms");
-        exit();
-        }
-       }
+                header("Location: index.php?action=listFilms");
+                exit();
+            
+            }
 
-       require "view/addFilm.php";
+        require "view/addFilm.php";
+      }
+
+       
     }
 }
 

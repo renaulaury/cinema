@@ -1,6 +1,6 @@
 <?php
 
-use Controller\CinemaController; /*use les controller*/
+/*use les controller*/
 use Controller\AccueilController;
 use Controller\FilmController;
 use Controller\RealController;
@@ -15,7 +15,6 @@ spl_autoload_register(function ($class_name) {
 });
 
 /*instanciation du controller*/
-$ctrlCinema = new CinemaController();
 $ctrlAccueil = new AccueilController();
 $ctrlFilm = new FilmController();
 $ctrlReal = new RealController();
@@ -83,9 +82,6 @@ if (isset($_GET['action'])) {
             $ctrlRole->detRole($id);
             break;
 
-       
-           
-          
     }
 }
 

@@ -13,7 +13,7 @@
                 </p>
                 <p>
                         <label for="duree">Durée :</label>
-                        <input type="text" id="duree" name="duree" placeholder="En minutes"></input>
+                        <input type="number" id="duree" name="duree" placeholder="En minutes"></input>
                 </p>
                 <p>
                         <label for="textarea">Synopsis :</label>
@@ -44,11 +44,20 @@
 
                 <p>Informations concernant le réalisateur</p>
 
-                <select name="">
-                        <?php foreach ($requete->fetchAll as $real) { ?>
-                        <option value=""><?= $real["name_real"] ?></option>
+                <select name="liste_real">
+                        <?php foreach ($requete->fetchAll() as $real) { ?>
+                        <option value="<?= $real["id_realisateur"] ?>"><?= $real["name_real"] ?></option>
                 <?php } ?>
                 </select>
+
+                <p>Informations concernant le genre</p>
+                 
+                        <?php foreach ($requete1->fetchAll() as $genre) { ?>
+                                <input type="checkbox" id="<?= $genre["id_genre"] ?>" name="genre"/>
+                                <label for="genre"><?= $genre["libelle_genre"] ?></label>
+                                
+                <?php } ?>
+               
 
                 <input type="submit" name="submit" value="Valider">
         </form>
