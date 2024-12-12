@@ -27,6 +27,7 @@ class CinemaController
                 photo
         FROM personne
         INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
+        LIMIT 4
         ");
 
         $requete3 = $pdo->query("
@@ -35,6 +36,7 @@ class CinemaController
                 photo
         FROM personne
         INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        LIMIT 4
         ");
 
         require "view/accueil.php"; //necessaire pour récuperer la vue qui nous intérésse
@@ -283,13 +285,93 @@ class CinemaController
     // Gestion du formulaire
     public function addGenre()
     {
+        $pdo = Connect::seConnecter();
+
        if (isset($_POST['submit']))  {
-        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $name = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        if ($name) {
+            $requete = $pdo->prepare("
+            INSERT INTO genre (libelle_genre)
+            VALUES (:name)
+            ");
+
+        $requete->execute(["name" => $name]);
+
+        header("Location: index.php?action=listGenres");
+        exit();
+        }
        }
-       
+
        require "view/addGenre.php";
     }
 
+    public function addReal()
+    {
+        $pdo = Connect::seConnecter();
+
+       if (isset($_POST['submit']))  {
+            $name_real = filter_input(INPUT_POST, 'name_real', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $firstname_real = filter_input(INPUT_POST, 'firstname_real', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $ddn_real = filter_input(INPUT_POST, 'ddn_real', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $url_real = filter_input(INPUT_POST, 'url_real', FILTER_VALIDATE_URL);
+
+
+            if ($name_real && $firstname_real && $sexe && $ddn_real && $url_real) {
+                $requete = $pdo->prepare("
+                INSERT INTO personne (nom, prenom, sexe, date_naissance, photo)
+                VALUES (:name_real, :firstname_real, :sexe, :ddn_real, :url_real)
+                ");
+
+                $requete->execute(["name_real" => $name_real,
+                                "firstname_real" => $firstname_real, 
+                                "sexe" => $sexe,
+                                "ddn_real" => $ddn_real, 
+                                "url_real" => $url_real]);
+
+                $idPersonne = $pdo->lastInsertId();
+
+                $requete1 = $pdo->prepare("
+                INSERT INTO realisateur (id_personne)
+                VALUES (:idPersonne)
+                ");
+
+                $requete1->execute(["idPersonne" => $idPersonne]);
+
+                // requete insert ajouter le réalisateur
+
+                header("Location: index.php?action=listReals");
+                exit();
+            }
+       }
+
+       require "view/addReal.php";
+    }
+
+    public function addFilm()
+    {
+        $pdo = Connect::seConnecter();
+
+       if (isset($_POST['submit']))  {
+        $name = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        if ($name) {
+            $requete = $pdo->prepare("
+            INSERT INTO genre (libelle_genre)
+            VALUES (:name)
+            ");
+
+        $requete->execute(["name" => $name]);
+
+        header("Location: index.php?action=listFilms");
+        exit();
+        }
+       }
+
+       require "view/addFilm.php";
+    }
 }
 
 // ensemble des requêtes 
+

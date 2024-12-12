@@ -5,8 +5,8 @@
 
  <p class="nb">Il y a <?= $requete->rowCount() ?> films.</p>
 
- <!-- Ici mon pb est que ma 2e boucle, boucle sur tous les genres et non
-  sur les genres du film en cours -->
+ <button onclick="window.location.href='index.php?action=addFilm';">Ajouter un film</button>
+
  <?php
     foreach ($requete->fetchAll() as $film) { ?>
      <div>
