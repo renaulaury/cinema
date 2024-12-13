@@ -7,14 +7,14 @@
 
  <p><?= $real["name_real"] ?></p>
  <p><?= $real["birth_date"] ?></p>
- <img src="<?= $real["photo"] ?>" alt="Photo de  . $real['photo']" />
+ <img class="img_pers" src="<?= $real["photo"] ?>" alt="Photo de  . $real['photo']" />
 
  <div>Info filmographie</div>
  <?php
    foreach ($requete2->fetchAll() as $info) { ?>
     <p><a href="index.php?action=detReal&id=<?= $info["id_film"] ?>"><?= $info["titre"] ?></a></p>
     <p><a href="index.php?action=detReal&id=<?= $info["id_genre"] ?>"><?= $info["tous_genre"] ?></a></p>
-    <p><img src="<?= $info["affiche"] ?>" alt="Affiche du film . $info['titre']" /></p>
+    <p><img class="img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $info['titre']" /></p>
  <?php } ?>
  <?php
 

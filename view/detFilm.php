@@ -13,21 +13,21 @@
 
  <p><?= $film["release_date"] ?> </p>
  <p><?= $film["timing"] ?> </p>
- <p><img src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
+ <p><img class='img_aff" src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
 
  <p><?= $film["synopsis"] ?> </p>
 
  <div>infos real</div>
  <p><a href="index.php?action=detReal&id=<?= $film["id_realisateur"] ?>"><?= $film["name_real"] ?></a></p>
  <p><?= $film["birth_date"] ?> </p>
- <img src="<?= $film["photo"] ?>" alt="Photo de  . $film['photo']" />
+ <img class='img_pers" src="<?= $film["photo"] ?>" alt="Photo de  . $film['photo']" />
 
  <div>infos acteurs</div>
  <?php
   foreach ($requete3->fetchAll() as $actor) { ?>
    <p><a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a> </p>
    <p><a href="index.php?action=detRole&id=<?= $actor["id_role"] ?>"><?= $actor["personnage"] ?></a> </p>
-   <img src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
+   <img class='img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
  <?php } ?>
 
  <?php

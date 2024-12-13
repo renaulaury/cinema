@@ -7,7 +7,7 @@
  <?php
    foreach ($requete->fetchAll() as $film) { ?>
     <p><a href="index.php?action=detFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a></p>
-    <img src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" />
+    <img class="img_aff" src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" />
 
  <?php } ?>
  <?php

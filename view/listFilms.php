@@ -3,28 +3,27 @@
    $film = $requete->fetch();
    ?>
 
+<div class="intro">
+    <p>Il y a <?= $requete->rowCount() ?> films.</p>
+    <div class="group_btn">
+      <button onclick="window.location.href='index.php?action=addFilm';">Ajouter un film</button>
+      <button onclick="window.location.href='index.php?action=addCasting';">Ajouter un casting</button>
+  </div>
+ </div>
 
- <p>Il y a <?= $requete->rowCount() ?> films.</p>
- <button onclick="window.location.href='index.php?action=addFilm';">Ajouter un film</button>
- <button onclick="window.location.href='index.php?action=addCasting';">Ajouter un casting</button>
+<section class="princ">
+  <?php
+    foreach ($requete->fetchAll() as $film) { ?>
+      <div class="film_group">
+        <div class="film_text">
+          <p><a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>"><?= $film["titre"] ?></a></p>
+          <p>Sorti le : <?= $film["release_date"] ?></p>
+        </div>
+        <p><img class="img_aff" src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
+      </div>
 
-
-
- <?php
-   foreach ($requete->fetchAll() as $film) { ?>
-
-    <p><a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>"><?= $film["titre"] ?></a></p>
-    <?php
-      /*
-            <p><?= $film["tous_genre"] ?> </p>
-            */
-      ?>
-    <p><?= $film["release_date"] ?></p>
-    <p><img src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
-
-
- <?php } ?>
-
+  <?php } ?>
+ </section>
 
  <?php
 

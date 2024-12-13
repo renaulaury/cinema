@@ -7,7 +7,7 @@
 
  <p><?= $actor["name_acteur"] ?></p>
  <p><?= $actor["birth_date"] ?></p>
- <img src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
+ <img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
 
 
  <div>Info filmographie</div>
@@ -16,7 +16,7 @@
      <p><a href="index.php?action=detFilm&id=<?= $info["id_film"] ?>"><?= $info["titre"] ?></a></p>
      <p><a href="index.php?action=detGenre&id=<?= $info["id_genre"] ?>"><?= $info["tous_genre"] ?></a></p>
      <p><?= $info["personnage"] ?></p>
-     <p><img src="<?= $info["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
+     <p><img class="img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
  <?php } ?>
  <?php
 

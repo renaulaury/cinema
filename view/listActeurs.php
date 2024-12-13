@@ -8,7 +8,7 @@
 foreach ($requete->fetchAll() as $actor) { ?>
 
         <p><a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a></p>
-        <img src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
+        <img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
 
 <?php } ?>
 
