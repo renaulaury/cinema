@@ -45,18 +45,33 @@
                 <p>Informations concernant le réalisateur</p>
 
                 <select name="liste_real">
-                        <?php foreach ($requete->fetchAll() as $real) { ?>
+                        <?php foreach ($req_real->fetchAll() as $real) { ?>
                         <option value="<?= $real["id_realisateur"] ?>"><?= $real["name_real"] ?></option>
                 <?php } ?>
                 </select>
 
                 <p>Informations concernant le genre</p>
                  
-                        <?php foreach ($requete1->fetchAll() as $genre) { ?>
-                                <input type="checkbox" id="<?= $genre["id_genre"] ?>" name="genre"/>
+                        <?php foreach ($req_genre->fetchAll() as $genre) { ?>
+                                <input type="checkbox" id="<?= $genre["id_genre"] ?>" value="<?= $genre["id_genre"] ?>" name="genre[]"/>
                                 <label for="genre"><?= $genre["libelle_genre"] ?></label>
                                 
                 <?php } ?>
+
+                <p>Informations concernant les acteurs</p>
+
+                <select name="liste_acteurs">
+                        <?php foreach ($req_real->fetchAll() as $real) { ?>
+                        <option value="<?= $real["id_realisateur"] ?>"><?= $real["name_real"] ?></option>
+                <?php } ?>
+                </select>
+                 
+                        <?php foreach ($req_acteur->fetchAll() as $acteur) { ?>
+                                <input type="checkbox" id="<?= $acteur["id_acteur"] ?>" value="<?= $acteur["id_acteur"] ?>" name="acteur[]"/>
+                                <label for="acteur"><?= $acteur["name_acteur"] ?></label>
+                                
+                <?php } ?>
+                
                
 
                 <input type="submit" name="submit" value="Valider">

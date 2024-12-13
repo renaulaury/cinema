@@ -32,7 +32,7 @@
 <?php
 
 
-$titre = "Ajout d'un genre";
+$titre = "Ajout d'un réalisateur";
 $contenu = ob_get_clean(); //Fin de la vue 
 require "view/template.php";
 

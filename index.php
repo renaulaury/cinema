@@ -26,10 +26,6 @@ $id = (isset($_GET['id'])) ? $_GET['id'] : null; //si existe ds l url alors $id=
 
 
 
-//Pb dans accueil : secion 1+ req 1 ok mais avec la 2 > bug
-//Manque dans detRole : nom de l'acteur + liens
-
-
 
 /*init de l'action*/
 if (isset($_GET['action'])) {

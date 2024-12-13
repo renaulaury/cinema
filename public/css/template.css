@@ -69,12 +69,10 @@ nav li {
     height: 10%;
 } 
 
-
-
-/* input, button, select, option {
+input, button, select, option, textarea {
     padding:1%;
     color:#1e1e1e;
-} */
+} 
 
 /*main*/
 main {

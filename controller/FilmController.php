@@ -77,17 +77,24 @@ class FilmController
     {
         $pdo = Connect::seConnecter();
 
-        $requete = $pdo->query("
+        $req_real = $pdo->query("
              SELECT  realisateur.id_realisateur,
                 CONCAT(personne.prenom, ' ', personne.nom) AS name_real                
             FROM personne
             INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
             ");
 
-        $requete1 = $pdo->query("
+        $req_genre = $pdo->query("
             SELECT  genre.id_genre, libelle_genre               
             FROM genre
         ");
+
+        $req_acteur = $pdo->query("
+             SELECT  acteur.id_acteur,
+                CONCAT(personne.prenom, ' ', personne.nom) AS name_acteur                
+            FROM personne
+            INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+            ");
 
         if (isset($_POST['submit']))  {
             $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -96,36 +103,51 @@ class FilmController
             $textarea = filter_input(INPUT_POST, 'textarea', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $note = filter_input(INPUT_POST, 'note', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $url_affiche = filter_input(INPUT_POST, 'url_affiche', FILTER_VALIDATE_URL);
-            $liste_real = filter_input(INPUT_POST, 'liste_real', FILTER_VALIDATE_URL);
-            $genre = filter_input(INPUT_POST, 'genre', FILTER_VALIDATE_URL);
-
+            $liste_real = filter_input(INPUT_POST, 'liste_real', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $genres = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+            $acteurs = filter_input(INPUT_POST, 'acteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+            
         if ($titre && $dds_fr && $duree && $textarea &&$note && $url_affiche && 
-        $liste_real && $genre) {      
-            $requete2 = $pdo->prepare("
+        $liste_real && $genres && $acteurs) {      
+            $req_addFilmReal = $pdo->prepare("
             INSERT INTO film (titre, date_sortie_fr, duree, synopsis, note, affiche, id_realisateur)
             VALUES (:titre, :dds_fr, :duree, :textarea, :note, :affiche, :id_realisateur)
-            ");            
+            ");        
 
-            $requete2->execute([
+            $req_addFilmReal->execute([
                 "titre" => $titre,
-                "date_sortie_fr" => $dds_fr,
+                "dds_fr" => $dds_fr,
                 "duree" => $duree,
-                "synopsis" => $textarea,
+                "textarea" => $textarea,
                 "note" => $note,
                 "affiche" => $url_affiche,
-                "liste_real" => $liste_real,  
-                "genre" => $genre          
+                "id_realisateur" => $liste_real
                 ]);
+               
+            $idFilm = $pdo->lastInsertId();
 
-                header("Location: index.php?action=listFilms");
-                exit();
-            
+            $req_addGenreFilm = $pdo->prepare("
+                            INSERT INTO genre_film (id_film, id_genre)
+                            VALUES (:idFilm, :idGenre)
+            ");
+
+            foreach ($genres as $genre) {
+               $req_addGenreFilm->execute([
+                "idFilm" => $idFilm, 
+                "idGenre" => $genre
+            ]);
             }
 
-        require "view/addFilm.php";
-      }
+            
 
-       
+            
+
+            header("Location: index.php?action=listFilms");
+            exit();
+            
+            }
+      }
+      require "view/addFilm.php";       
     }
 }
 

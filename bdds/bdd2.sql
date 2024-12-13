@@ -15,11 +15,11 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
--- Listage de la structure de la base pour cinema
-CREATE DATABASE IF NOT EXISTS `cinema` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `cinema`;
+-- Listage de la structure de la base pour cinemalily
+CREATE DATABASE IF NOT EXISTS `cinemalily` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `cinemalily`;
 
--- Listage de la structure de table cinema. acteur
+-- Listage de la structure de table cinemalily. acteur
 CREATE TABLE IF NOT EXISTS `acteur` (
   `id_acteur` int NOT NULL AUTO_INCREMENT,
   `id_personne` int NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `acteur` (
   CONSTRAINT `FK1_person` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.acteur : ~26 rows (environ)
+-- Listage des données de la table cinemalily.acteur : ~15 rows (environ)
 REPLACE INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(2, 2),
 	(3, 3),
@@ -57,7 +57,7 @@ REPLACE INTO `acteur` (`id_acteur`, `id_personne`) VALUES
 	(24, 25),
 	(26, 30);
 
--- Listage de la structure de table cinema. casting
+-- Listage de la structure de table cinemalily. casting
 CREATE TABLE IF NOT EXISTS `casting` (
   `id_film` int NOT NULL,
   `id_acteur` int NOT NULL,
@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `casting` (
   CONSTRAINT `FK3_role` FOREIGN KEY (`id_role`) REFERENCES `role` (`id_role`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.casting : ~31 rows (environ)
+-- Listage des données de la table cinemalily.casting : ~31 rows (environ)
 REPLACE INTO `casting` (`id_film`, `id_acteur`, `id_role`) VALUES
 	(1, 2, 1),
 	(1, 3, 2),
@@ -104,7 +104,7 @@ REPLACE INTO `casting` (`id_film`, `id_acteur`, `id_role`) VALUES
 	(8, 7, 34),
 	(8, 26, 35);
 
--- Listage de la structure de table cinema. film
+-- Listage de la structure de table cinemalily. film
 CREATE TABLE IF NOT EXISTS `film` (
   `id_film` int NOT NULL AUTO_INCREMENT,
   `titre` varchar(50) NOT NULL,
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `film` (
   CONSTRAINT `FK1_real` FOREIGN KEY (`id_realisateur`) REFERENCES `realisateur` (`id_realisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.film : ~8 rows (environ)
+-- Listage des données de la table cinemalily.film : ~8 rows (environ)
 REPLACE INTO `film` (`id_film`, `titre`, `date_sortie_fr`, `duree`, `synopsis`, `note`, `affiche`, `id_realisateur`) VALUES
 	(1, 'Inception', '2010-07-16', 148, 'Dom Cobb est un expert en extraction, une technique qui permet d\'entrer dans les rêves d\'autres personnes pour voler des informations secrètes. Il se voit offrir une chance de rédemption s\'il réussit à implanter une idée dans l\'esprit d\'un homme. Le film navigue entre réalité et rêve.', 5, 'https://m.media-amazon.com/images/I/912AErFSBHL._AC_UF1000,1000_QL80_.jpg', 17),
 	(2, 'The dark Knight', '2008-07-18', 152, ' Batman lutte contre le Joker, un criminel anarchiste qui menace Gotham City. Le film explore des thèmes de moralité, de sacrifice et de justice.', 5, 'https://fr.web.img6.acsta.net/c_310_420/medias/nmedia/18/63/97/89/18949761.jpg', 17),
@@ -130,14 +130,14 @@ REPLACE INTO `film` (`id_film`, `titre`, `date_sortie_fr`, `duree`, `synopsis`, 
 	(7, 'Inglourious Basterds', '2009-08-21', 153, 'Un groupe de soldats juifs américains se lance dans une mission secrète pour éliminer des nazis pendant la Seconde Guerre mondiale, mais leurs chemins croisent celui d\'une jeune femme déterminée à venger sa famille.', 1, 'https://static.thcdn.com/images/large/original//productimg/1600/1600/10064866-1334918500666213.jpg', 19),
 	(8, 'Le petit tailleur', '2009-05-10', 15, 'Un tailleur se perd dans les émotions suscitées par son métier, créant des pièces pour d\'autres tout en étant étranger à ses propres désirs.', 0, 'https://www.radiofrance.fr/s3/cruiser-production/2023/04/defb963b-a79b-4338-a88d-ade4af6ade1d/400x400_sc_fm-l-histoire-du-petit-tailleur-e-pisode1.jpg', 21);
 
--- Listage de la structure de table cinema. genre
+-- Listage de la structure de table cinemalily. genre
 CREATE TABLE IF NOT EXISTS `genre` (
   `id_genre` int NOT NULL AUTO_INCREMENT,
   `libelle_genre` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.genre : ~10 rows (environ)
+-- Listage des données de la table cinemalily.genre : ~10 rows (environ)
 REPLACE INTO `genre` (`id_genre`, `libelle_genre`) VALUES
 	(1, 'Science-Fiction'),
 	(2, 'Thriller'),
@@ -150,7 +150,7 @@ REPLACE INTO `genre` (`id_genre`, `libelle_genre`) VALUES
 	(9, 'Comédie'),
 	(10, 'Psychologique');
 
--- Listage de la structure de table cinema. genre_film
+-- Listage de la structure de table cinemalily. genre_film
 CREATE TABLE IF NOT EXISTS `genre_film` (
   `id_film` int NOT NULL,
   `id_genre` int NOT NULL,
@@ -160,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `genre_film` (
   CONSTRAINT `FK2_genre` FOREIGN KEY (`id_genre`) REFERENCES `genre` (`id_genre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.genre_film : ~19 rows (environ)
+-- Listage des données de la table cinemalily.genre_film : ~19 rows (environ)
 REPLACE INTO `genre_film` (`id_film`, `id_genre`) VALUES
 	(1, 1),
 	(1, 2),
@@ -182,7 +182,7 @@ REPLACE INTO `genre_film` (`id_film`, `id_genre`) VALUES
 	(8, 5),
 	(8, 10);
 
--- Listage de la structure de table cinema. personne
+-- Listage de la structure de table cinemalily. personne
 CREATE TABLE IF NOT EXISTS `personne` (
   `id_personne` int NOT NULL AUTO_INCREMENT,
   `nom` varchar(50) NOT NULL,
@@ -191,9 +191,9 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `date_naissance` date NOT NULL,
   `photo` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.personne : ~29 rows (environ)
+-- Listage des données de la table cinemalily.personne : ~29 rows (environ)
 REPLACE INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `date_naissance`, `photo`) VALUES
 	(1, 'Nolan', 'Christopher', 'M', '1970-07-30', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Christopher_Nolan_Cannes_2018.jpg/260px-Christopher_Nolan_Cannes_2018.jpg'),
 	(2, 'DiCaprio', 'Leornardo', 'M', '1974-11-11', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Leonardo_Dicaprio_Cannes_2019.jpg/250px-Leonardo_Dicaprio_Cannes_2019.jpg'),
@@ -223,33 +223,35 @@ REPLACE INTO `personne` (`id_personne`, `nom`, `prenom`, `sexe`, `date_naissance
 	(27, 'Pitt', 'Brad', 'M', '1963-10-04', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Brad_Pitt-69858.jpg/240px-Brad_Pitt-69858.jpg'),
 	(28, 'Kruger', 'Diane', 'F', '1976-07-15', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Diane_Kruger-5300_%28cropped%29.jpg/220px-Diane_Kruger-5300_%28cropped%29.jpg'),
 	(29, 'Laurent', 'Mélanie', 'F', '1983-02-21', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/M%C3%A9lanie_Laurent_C%C3%A9sar_2016_infobox.jpg/220px-M%C3%A9lanie_Laurent_C%C3%A9sar_2016_infobox.jpg'),
-	(30, 'Duvauchelle', 'Nicolas', 'M', '1980-03-27', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Nicolas_Duvauchelle_2012.jpg/220px-Nicolas_Duvauchelle_2012.jpg');
+	(30, 'Duvauchelle', 'Nicolas', 'M', '1980-03-27', 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Nicolas_Duvauchelle_2012.jpg/220px-Nicolas_Duvauchelle_2012.jpg'),
+	(45, 'Renau', 'Laury', 'M', '2024-12-04', 'https://th.bing.com/th/id/OIP.GGuW5LA4g4rIJSv1GTdGGwHaK9?w=186&h=276&c=7&r=0&o=5&pid=1.7');
 
--- Listage de la structure de table cinema. realisateur
+-- Listage de la structure de table cinemalily. realisateur
 CREATE TABLE IF NOT EXISTS `realisateur` (
   `id_realisateur` int NOT NULL AUTO_INCREMENT,
   `id_personne` int NOT NULL,
   PRIMARY KEY (`id_realisateur`),
   KEY `id_personne` (`id_personne`),
   CONSTRAINT `FK1_personn` FOREIGN KEY (`id_personne`) REFERENCES `personne` (`id_personne`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.realisateur : ~5 rows (environ)
+-- Listage des données de la table cinemalily.realisateur : ~0 rows (environ)
 REPLACE INTO `realisateur` (`id_realisateur`, `id_personne`) VALUES
 	(17, 1),
 	(21, 7),
 	(18, 22),
 	(20, 23),
-	(19, 26);
+	(19, 26),
+	(22, 45);
 
--- Listage de la structure de table cinema. role
+-- Listage de la structure de table cinemalily. role
 CREATE TABLE IF NOT EXISTS `role` (
   `id_role` int NOT NULL AUTO_INCREMENT,
   `personnage` varchar(50) NOT NULL,
   PRIMARY KEY (`id_role`)
 ) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table cinema.role : ~35 rows (environ)
+-- Listage des données de la table cinemalily.role : ~35 rows (environ)
 REPLACE INTO `role` (`id_role`, `personnage`) VALUES
 	(1, 'Dom Cobb'),
 	(2, 'Arthur'),
