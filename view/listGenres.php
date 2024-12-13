@@ -18,7 +18,7 @@
 <?php
 
 
-$titre = "Liste des genres";
+$titre = "<h1 class='titreH1'>Liste des genres</h1>";
 $contenu = ob_get_clean(); //Fin de la vue 
 require "view/template.php";
 

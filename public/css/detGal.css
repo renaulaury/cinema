@@ -1,0 +1,87 @@
+.infos h1 {
+    padding-bottom: 10%;
+    font-family: 'Lobster two', arial;
+}
+.contain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sec {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 8%;
+}
+
+.infos {
+    display: grid;
+    grid-template-columns: 1 1fr;
+    grid-template-rows: repeat(3 1fr);
+}
+
+.infos p {
+    padding: 2.5% 0;
+}
+
+.part1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15%;
+}
+
+h2 {
+    padding: 3% 0;
+}
+
+.part2 {
+    width: 50%;
+}
+
+.secBis {
+    display: flex;
+    align-items: center;
+}
+
+.groupreal {
+    display: grid;
+    grid-template-columns: 1 1fr;
+    grid-template-rows: repeat(auto, 1fr);
+    text-align: center;
+}
+
+.secTer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secQuart {
+    width: 50%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(auto, 1fr);
+    gap: 30px 10px;
+    padding-bottom: 8%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.acteurRole {
+    display: grid;
+    grid-template-columns: 1 1fr;
+    grid-template-rows: repeat(auto, 1fr);
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+

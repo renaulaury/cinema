@@ -1,13 +1,3 @@
-#container {
-    display: flex;    
-}
-
-h1 {
-    font-family: 'Lobster two', arial;
-    text-align: center;
-    padding-bottom: 3%;
-}
-
 .princ {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

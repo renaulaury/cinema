@@ -1,38 +1,78 @@
  <?php
   ob_start();
   $film = $requete1->fetch();
-
-
   ?>
- <p><?= $film["titre"] ?> </p>
 
+
+<section class="sec"> 
+  <div class="part1">
+    <div class="infos">
+      <h1><?= $film['titre'] ?></h1>
+      <p>
+        <?php
+        foreach ($requete2->fetchAll() as $genre) { ?>     
+          <a href="index.php?action=detGenre&id=<?= $genre["id_genre"] ?>"><?= $genre["libelle_genre"] ?></a>       
+        <?php } ?>
+      </p>
+
+      <p><?= $film["timing"] ?> </p>
+      <p>Sortie en France le : <?= $film["release_date"] ?> </p>
+    </div>
+  
+    <div>
+      <img class="img_aff" src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" />
+    </div>
+  </div>
+ </section>
+
+
+<section class="sec secBis">
+<div class="part2">
+  <h2>Synopsis</h2>
+  <p><?= $film["synopsis"] ?> </p>
+ </div>
+</section>
+
+
+<section>
+<h2>Réalisateur</h2> 
+<div class="secTer">
+   <div class="groupReal">
+      <p><a href="index.php?action=detReal&id=<?= $film["id_realisateur"] ?>"><?= $film["name_real"] ?></a></p>
+      <p><img class="img_pers" src="<?= $film["photo"] ?>" alt="Photo de  . $film['photo']" /></p>
+    </div>
+  </div>
+</section>
+
+<section> 
+  <h2>Acteurs</h2>
+
+  <div class="contain">
+  <div class="secQuart">
+    <?php
+      foreach ($requete3->fetchAll() as $actor) { ?>
+      <div class="acteurRole">
+        <p><a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a> </p>
+        <p><img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" /></p>
+      </div>
+
+      <p>--------- ></p>
+        
+      <div class="acteurRole">
+        <p><a  href="index.php?action=detRole&id=<?= $actor["id_role"] ?>"><?= $actor["personnage"] ?></a> </p>
+        <p>Image role</p>
+      </div>
+      <?php } ?>
+      </div>
+      </div>
+</section>
+
+
+
+ 
  <?php
-  foreach ($requete2->fetchAll() as $genre) { ?>
-   <p><a href="index.php?action=detGenre&id=<?= $genre["id_genre"] ?>"><?= $genre["libelle_genre"] ?></a> </p>
- <?php } ?>
 
- <p><?= $film["release_date"] ?> </p>
- <p><?= $film["timing"] ?> </p>
- <p><img class='img_aff" src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
-
- <p><?= $film["synopsis"] ?> </p>
-
- <div>infos real</div>
- <p><a href="index.php?action=detReal&id=<?= $film["id_realisateur"] ?>"><?= $film["name_real"] ?></a></p>
- <p><?= $film["birth_date"] ?> </p>
- <img class='img_pers" src="<?= $film["photo"] ?>" alt="Photo de  . $film['photo']" />
-
- <div>infos acteurs</div>
- <?php
-  foreach ($requete3->fetchAll() as $actor) { ?>
-   <p><a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a> </p>
-   <p><a href="index.php?action=detRole&id=<?= $actor["id_role"] ?>"><?= $actor["personnage"] ?></a> </p>
-   <img class='img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
- <?php } ?>
-
- <?php
-
-  $titre = "Détail du film " . $film["titre"];
+  $titre = "";
   $contenu = ob_get_clean(); //Fin de la vue 
   require "view/template.php";
 

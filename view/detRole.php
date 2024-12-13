@@ -15,7 +15,7 @@
  <?php } ?>
  <?php
 
-   $titre = "Role : ";
+   $titre = "<h1 class='titreH1'>Role : </h1>";
    $contenu = ob_get_clean(); //Fin de la vue 
    require "view/template.php";
 

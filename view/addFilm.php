@@ -67,7 +67,7 @@
 <?php
 
 
-$titre = "Ajout d'un film";
+$titre = "<h1 class='titreH1'>Ajout d'un film</h1>";
 $contenu = ob_get_clean(); //Fin de la vue 
 require "view/template.php";
 

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./public/css/template.css">
     <link rel="stylesheet" href="./public/css/accueil.css"> 
     <link rel="stylesheet" href="./public/css/mainGal.css">   
+    <link rel="stylesheet" href="./public/css/detGal.css">  
     <link rel="stylesheet" href="./public/css/listGenres.css">
     <link rel="stylesheet" href="./public/css/detFilms.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
@@ -34,7 +35,7 @@
         </header>
 
         <main>
-            <h1><?= $titre ?></h1>
+            <?= $titre ?>
             <?= $contenu ?>
         </main>
     </div>

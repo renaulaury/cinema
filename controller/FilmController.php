@@ -33,7 +33,7 @@ class FilmController
         SELECT film.id_film, 
                 film.titre,
                 CONCAT(DAY(film.date_sortie_fr), '-', MONTH(film.date_sortie_fr), '-', YEAR(film.date_sortie_fr)) AS release_date,
-                TIME_FORMAT(SEC_TO_TIME(duree * 60), '%H:%i') AS timing,
+                TIME_FORMAT(SEC_TO_TIME(duree * 60), '%Hh%i') AS timing,
                 film.synopsis,
                 affiche, 
                 photo,

@@ -12,7 +12,7 @@
  <?php } ?>
  <?php
 
-   $titre = "Genre : ";
+   $titre = "<h1 class='titreH1'>Genre : </h1>";
    $contenu = ob_get_clean(); //Fin de la vue 
    require "view/template.php";
 

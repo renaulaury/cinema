@@ -25,7 +25,7 @@ foreach ($requete->fetchAll() as $actor) { ?>
 
 <?php
 
-$titre = "Liste des acteurs";
+$titre = "<h1 class='titreH1'>Liste des acteurs</h1>";
 $contenu = ob_get_clean(); //Fin de la vue 
 require "view/template.php";
 

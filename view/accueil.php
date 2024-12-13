@@ -55,7 +55,7 @@ ob_start();
 
 <?php
 
-$titre = "Accueil";
+$titre = "<h1 class='titreH1'>Accueil</h1>";
 $contenu = ob_get_clean(); //Fin de la vue 
 require "view/template.php";
 
