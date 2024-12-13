@@ -88,14 +88,7 @@ class FilmController
             SELECT  genre.id_genre, libelle_genre               
             FROM genre
         ");
-
-        $req_acteur = $pdo->query("
-             SELECT  acteur.id_acteur,
-                CONCAT(personne.prenom, ' ', personne.nom) AS name_acteur                
-            FROM personne
-            INNER JOIN acteur ON personne.id_personne = acteur.id_personne
-            ");
-
+        
         if (isset($_POST['submit']))  {
             $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dds_fr = filter_input(INPUT_POST, 'dds_fr', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -105,10 +98,9 @@ class FilmController
             $url_affiche = filter_input(INPUT_POST, 'url_affiche', FILTER_VALIDATE_URL);
             $liste_real = filter_input(INPUT_POST, 'liste_real', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $genres = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-            $acteurs = filter_input(INPUT_POST, 'acteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-            
+                        
         if ($titre && $dds_fr && $duree && $textarea &&$note && $url_affiche && 
-        $liste_real && $genres && $acteurs) {      
+        $liste_real && $genres) {      
             $req_addFilmReal = $pdo->prepare("
             INSERT INTO film (titre, date_sortie_fr, duree, synopsis, note, affiche, id_realisateur)
             VALUES (:titre, :dds_fr, :duree, :textarea, :note, :affiche, :id_realisateur)
@@ -138,9 +130,6 @@ class FilmController
             ]);
             }
 
-            
-
-            
 
             header("Location: index.php?action=listFilms");
             exit();
@@ -148,6 +137,54 @@ class FilmController
             }
       }
       require "view/addFilm.php";       
+    }
+
+    public function addCasting()
+    {
+        $pdo = Connect::seConnecter();
+
+        $req_film = $pdo->query("
+            SELECT film.id_film, titre                           
+            FROM film
+        ");
+
+        $req_acteur = $pdo->query("
+            SELECT  acteur.id_acteur,
+                CONCAT(personne.prenom, ' ', personne.nom) AS name_acteur                
+            FROM personne
+            INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        ");
+
+        $req_role = $pdo->query("
+            SELECT role.id_role, 
+                    personnage
+            FROM role
+        ");
+        
+        if (isset($_POST['submit']))  {
+            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+            $acteur = filter_input(INPUT_POST, 'name_acteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+            $role = filter_input(INPUT_POST, 'personnage', FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+            
+        if ($titre && $acteur && $role) {    
+            $req_casting = $pdo->prepare("
+                INSERT INTO casting (id_film, id_acteur, id_role)
+                VALUES (:id_film, :id_acteur, :id_role)    
+            ");
+
+            $req_casting->execute([
+                "id_film" => $titre,
+                "id_acteur" => $acteur,
+                "id_role" => $role
+            ]);
+            
+            
+            header("Location: index.php?action=addCasting");
+            exit();
+            
+            }
+      }
+      require "view/addCasting.php";       
     }
 }
 

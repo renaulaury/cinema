@@ -6,6 +6,7 @@
 
  <p>Il y a <?= $requete->rowCount() ?> films.</p>
  <button onclick="window.location.href='index.php?action=addFilm';">Ajouter un film</button>
+ <button onclick="window.location.href='index.php?action=addCasting';">Ajouter un casting</button>
 
 
 

@@ -58,19 +58,6 @@
                                 
                 <?php } ?>
 
-                <p>Informations concernant les acteurs</p>
-
-                <select name="liste_acteurs">
-                        <?php foreach ($req_real->fetchAll() as $real) { ?>
-                        <option value="<?= $real["id_realisateur"] ?>"><?= $real["name_real"] ?></option>
-                <?php } ?>
-                </select>
-                 
-                        <?php foreach ($req_acteur->fetchAll() as $acteur) { ?>
-                                <input type="checkbox" id="<?= $acteur["id_acteur"] ?>" value="<?= $acteur["id_acteur"] ?>" name="acteur[]"/>
-                                <label for="acteur"><?= $acteur["name_acteur"] ?></label>
-                                
-                <?php } ?>
                 
                
 

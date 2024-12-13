@@ -43,6 +43,9 @@ if (isset($_GET['action'])) {
         case "addFilm":
             $ctrlFilm->addFilm();
             break;
+        case "addCasting":
+            $ctrlFilm->addCasting();
+            break;
 
         case "listReals":
             $ctrlReal->listReals();
