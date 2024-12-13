@@ -13,7 +13,7 @@ ob_start();
         foreach ($requete->fetchAll() as $info) { ?>
             <div class="acc_group">
                 <a href="index.php?action=detFilm&id=<?= $info['id_film'] ?>"><?= $info["titre"] ?></a>
-                <p><img class='img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $info['titre']" /></p>
+                <p><img class="img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $info['titre']" /></p>
             </div>
         <?php } ?>
     </div>
@@ -28,7 +28,7 @@ ob_start();
         foreach ($requete2->fetchAll() as $info) { ?>
             <div class="acc_group">
                 <a href="index.php?action=detReal&id=<?= $info["id_realisateur"] ?>"><?= $info["name_real"] ?></a>
-                <p><img class='img_aff" src="<?= $info["photo"] ?>" alt="Photo de  . $info['photo']" /></p>
+                <p><img class="img_pers" src="<?= $info["photo"] ?>" alt="Photo de  . $info['photo']" /></p>
             </div>
         <?php } ?>
     </div>
@@ -43,7 +43,7 @@ ob_start();
         foreach ($requete3->fetchAll() as $info) { ?>
             <div class="acc_group">
                 <a href="index.php?action=detActeur&id=<?= $info["id_acteur"] ?>"><?= $info["name_acteur"] ?></a>
-                <p><img class='img_aff" src="<?= $info["photo"] ?>" alt="Photo de  . $info['photo']" /></p>
+                <p><img class="img_pers" src="<?= $info["photo"] ?>" alt="Photo de  . $info['photo']" /></p>
             </div>
         <?php } ?>
     </div>

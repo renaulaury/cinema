@@ -1,16 +1,20 @@
 <?php ob_start() ?> <!--Début de la vue -->
 
-<p>Il y a <?= $requete->rowCount() ?> genres.</p>
+<div class="intro">
+        <p>Il y a <?= $requete->rowCount() ?> genres.</p>
+<div class="group_btn">
+        <button onclick="window.location.href='index.php?action=addGenre';">Ajouter un genre</button>
+        </div>
+</div>
 
-
+<section class="princ">
         <?php
         foreach ($requete->fetchAll() as $genre) { ?>
-                <a href="index.php?action=detGenre&id=<?= $genre["id_genre"] ?>"><?= $genre["libelle_genre"] ?></a></p>
-                     
+                <div class="group">
+                        <a class="genre" href="index.php?action=detGenre&id=<?= $genre["id_genre"] ?>"><?= $genre["libelle_genre"] ?></a>
+                </div> 
         <?php } ?>
-
-        <button onclick="window.location.href='index.php?action=addGenre';">Ajouter un genre</button>
-
+</section>
 <?php
 
 

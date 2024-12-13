@@ -14,8 +14,8 @@
 <section class="princ">
   <?php
     foreach ($requete->fetchAll() as $film) { ?>
-      <div class="film_group">
-        <div class="film_text">
+      <div class="group">
+        <div class="text">
           <p><a href="index.php?action=detFilm&id=<?= $film['id_film'] ?>"><?= $film["titre"] ?></a></p>
           <p>Sorti le : <?= $film["release_date"] ?></p>
         </div>

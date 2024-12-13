@@ -15,6 +15,7 @@ class GenreController
         $requete = $pdo->query("
             SELECT  genre.id_genre, libelle_genre               
             FROM genre
+            ORDER BY libelle_genre ASC
         ");
 
         require "view/listGenres.php";

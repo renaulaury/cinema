@@ -18,7 +18,7 @@ class AccueilController
             affiche,
             CONCAT(DAY(film.date_sortie_fr), '-', MONTH(film.date_sortie_fr), '-', YEAR(film.date_sortie_fr)) AS release_date
         FROM film        
-        LIMIT 4
+        LIMIT 5
         ");
 
         $requete2 = $pdo->query("
@@ -27,7 +27,7 @@ class AccueilController
                 photo
         FROM personne
         INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
-        LIMIT 4
+        LIMIT 5
         ");
 
         $requete3 = $pdo->query("
@@ -36,7 +36,7 @@ class AccueilController
                 photo
         FROM personne
         INNER JOIN acteur ON personne.id_personne = acteur.id_personne
-        LIMIT 4
+        LIMIT 5
         ");
 
         require "view/accueil.php"; //necessaire pour récuperer la vue qui nous intérésse
