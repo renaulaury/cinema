@@ -4,23 +4,23 @@
 <form action="index.php?action=addFilm" method="post">
         <section>
                 <h2>Informations concernant le film</h2>
-                <div>
+                <div class="formEncart formTitre">
                         <p><label for="titre">Titre :</label></p>
                         <p><input type="text" id="titre" name="titre"></input></p>
                 </div>
-                <div>
+                <div class="formEncart formDds">
                         <p><label for="dds_fr">Date de sortie en France :</label></p>
                         <p><input type="date" id="dds_fr" name="dds_fr" placeholder="AAAAMMJJ"></input></p>
                 </div>
-                <div>
+                <div class="formEncart formDuree">
                         <p><label for="duree">Durée :</label></p>
                         <p> <input type="number" id="duree" name="duree" placeholder="En minutes"></input></p>
                 </div>
-                <div>
+                <div class="formEncart formtextarea">
                         <p><label for="textarea">Synopsis :</label></p>
                         <p><textarea id="textarea" name="textarea" rows="4" cols="50"></textarea></p>
                 </div>
-                <div>
+                <div class="formEncart">
                         <p>
                                 <label for="note">Note :</label>
                         </p>
