@@ -37,7 +37,7 @@
 
                         <p>
                                 <label for="note">3</label>
-                                <input type="radio" id="note3" name="note" value="33" />
+                                <input type="radio" id="note3" name="note" value="3" />
                         </p>
 
                         <p>
@@ -51,6 +51,7 @@
                         </p>
                         </p>
                 </div>
+
                 <div>
                         <p><label for="url_affiche">Url de l'affiche :</label></p>
                         <p><input type="text" id="url_affiche" name="url_affiche"></input></p>
