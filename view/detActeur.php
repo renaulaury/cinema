@@ -1,30 +1,52 @@
  <?php
-    ob_start();
-    $actor = $requete1->fetch();
-    ?> <!--Début de la vue -->
+   ob_start();
+   $actor = $requete1->fetch();
+   ?> <!--Début de la vue -->
 
- <div>Info acteur</div>
+ <section class="sec">
+    <div class="part1">
+       <div class="infos">
+          <p><?= $actor["name_acteur"] ?></p>
+          <p>Né(e) le <?= $actor["birth_date"] ?></p>
+       </div>
+       <div>
+          <img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
+       </div>
+    </div>
+ </section>
 
- <p><?= $actor["name_acteur"] ?></p>
- <p><?= $actor["birth_date"] ?></p>
- <img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
+
+ <section>
+    <h2>Filmographie</h2>
+
+    <div class="contain">
+       <div class="secQuart">
+          <?php
+            foreach ($requete2->fetchAll() as $info) { ?>
+             <div class="groupInfo">
+                <p><a href="index.php?action=detFilm&id=<?= $info["id_film"] ?>"><?= $info["titre"] ?></a></p>
+                <p><img class="img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
+             </div>
+
+             <p>--------- ></p>
+
+             <div class="groupInfo">
+                <p><a href="index.php?action=detRole&id=<?= $info["id_role"] ?>"><?= $info["personnage"] ?></a> </p>
+                <p>Image role</p>
+             </div>
+          <?php } ?>
+       </div>
+    </div>
+ </section>
 
 
- <div>Info filmographie</div>
  <?php
-    foreach ($requete2->fetchAll() as $info) { ?>
-     <p><a href="index.php?action=detFilm&id=<?= $info["id_film"] ?>"><?= $info["titre"] ?></a></p>
-     <p><a href="index.php?action=detGenre&id=<?= $info["id_genre"] ?>"><?= $info["tous_genre"] ?></a></p>
-     <p><?= $info["personnage"] ?></p>
-     <p><img class="img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
- <?php } ?>
- <?php
 
-    $titre = "<h1 class='titreH1'>Filmographie de " . $actor["name_acteur"]."</h1>";
-    $contenu = ob_get_clean(); //Fin de la vue 
-    require "view/template.php";
+   $titre = "<h1 class='titreH1'>Filmographie de " . $actor["name_acteur"] . "</h1>";
+   $contenu = ob_get_clean(); //Fin de la vue 
+   require "view/template.php";
 
-    ?>
+   ?>
 
  <!--Entre les 2 ob sera contenu dans $contenu -->
  <!-- tjs donner valeur a $titre -> <title>$titre</title> -->

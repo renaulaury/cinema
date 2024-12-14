@@ -40,6 +40,7 @@ class ActeurController
 
         $requete2 = $pdo->prepare("
           SELECT  genre.id_genre, film.id_film,
+                role.id_role,
  			    film.titre, 
 	            film.affiche, 
 	            role.personnage,
@@ -51,17 +52,13 @@ class ActeurController
             INNER JOIN genre_film ON film.id_film = genre_film.id_film 
             INNER JOIN genre ON genre_film.id_genre = genre.id_genre   
             WHERE casting.id_acteur = :id   
-            GROUP BY film.id_film, film.titre, film.affiche, role.personnage, genre.id_genre
+            GROUP BY film.id_film, film.titre, film.affiche, role.id_role, role.personnage, genre.id_genre
         ");
 
         $requete2->execute(["id" => $id]);
 
         require "view/detActeur.php";
     }
-
-    
-    
 }
 
 // ensemble des requêtes 
-

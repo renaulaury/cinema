@@ -4,72 +4,74 @@
   ?>
 
 
-<section class="sec"> 
-  <div class="part1">
-    <div class="infos">
-      <h1><?= $film['titre'] ?></h1>
-      <p>
-        <?php
-        foreach ($requete2->fetchAll() as $genre) { ?>     
-          <a href="index.php?action=detGenre&id=<?= $genre["id_genre"] ?>"><?= $genre["libelle_genre"] ?></a>       
-        <?php } ?>
-      </p>
+ <section class="sec">
+   <div class="part1">
+     <div class="infos">
+       <h1><?= $film['titre'] ?></h1>
+       <p>
+         <?php
+          foreach ($requete2->fetchAll() as $genre) { ?>
+       <p>
+         <?= $genre["libelle_genre"] ?>
+       </p>
+     <?php } ?>
+     </p>
 
-      <p><?= $film["timing"] ?> </p>
-      <p>Sortie en France le : <?= $film["release_date"] ?> </p>
-    </div>
-  
-    <div>
-      <img class="img_aff" src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" />
-    </div>
-  </div>
+     <p><?= $film["timing"] ?> </p>
+     <p>Sortie en France le : <?= $film["release_date"] ?> </p>
+     </div>
+
+     <div>
+       <img class="img_aff" src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" />
+     </div>
+   </div>
  </section>
 
 
-<section class="sec secBis">
-<div class="part2">
-  <h2>Synopsis</h2>
-  <p><?= $film["synopsis"] ?> </p>
- </div>
-</section>
+ <section class="sec secBis">
+   <div class="part2">
+     <h2>Synopsis</h2>
+     <p><?= $film["synopsis"] ?> </p>
+   </div>
+ </section>
 
 
-<section>
-<h2>Réalisateur</h2> 
-<div class="secTer">
-   <div class="groupReal">
-      <p><a href="index.php?action=detReal&id=<?= $film["id_realisateur"] ?>"><?= $film["name_real"] ?></a></p>
-      <p><img class="img_pers" src="<?= $film["photo"] ?>" alt="Photo de  . $film['photo']" /></p>
-    </div>
-  </div>
-</section>
+ <section class="sec">
+   <h2>Réalisateur</h2>
+   <div class="secTer">
+     <div class="groupReal">
+       <p><a href="index.php?action=detReal&id=<?= $film["id_realisateur"] ?>"><?= $film["name_real"] ?></a></p>
+       <p><img class="img_pers" src="<?= $film["photo"] ?>" alt="Photo de  . $film['photo']" /></p>
+     </div>
+   </div>
+ </section>
 
-<section> 
-  <h2>Acteurs</h2>
+ <section class="sec">
+   <h2>Acteurs</h2>
 
-  <div class="contain">
-  <div class="secQuart">
-    <?php
-      foreach ($requete3->fetchAll() as $actor) { ?>
-      <div class="acteurRole">
-        <p><a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a> </p>
-        <p><img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" /></p>
-      </div>
+   <div class="contain">
+     <div class="secQuart">
+       <?php
+        foreach ($requete3->fetchAll() as $actor) { ?>
+         <div class="groupInfo">
+           <p><a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a> </p>
+           <p><img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" /></p>
+         </div>
 
-      <p>--------- ></p>
-        
-      <div class="acteurRole">
-        <p><a  href="index.php?action=detRole&id=<?= $actor["id_role"] ?>"><?= $actor["personnage"] ?></a> </p>
-        <p>Image role</p>
-      </div>
-      <?php } ?>
-      </div>
-      </div>
-</section>
+         <p>--------- ></p>
+
+         <div class="groupInfo">
+           <p><a href="index.php?action=detRole&id=<?= $actor["id_role"] ?>"><?= $actor["personnage"] ?></a> </p>
+           <p>Image role</p>
+         </div>
+       <?php } ?>
+     </div>
+   </div>
+ </section>
 
 
 
- 
+
  <?php
 
   $titre = "";

@@ -10,19 +10,19 @@
 <section class="princ">
         <?php
         foreach ($requete->fetchAll() as $role) { ?>
-        <div class="group">
-                <div class="text">
-                <a href="index.php?action=detRole&id=<?= $role["id_role"] ?>"><?= $role["personnage"] ?></a></p>
-                </div>
+                <div class="group">
+                        <div class="text">
+                                <a href="index.php?action=detRole&id=<?= $role["id_role"] ?>"><?= $role["personnage"] ?></a></p>
+                        </div>
                         <p>Image</p>
-                </div>   
+                </div>
         <?php } ?>
 
 
-<?php
+        <?php
 
-$titre = "<h1 class='titreH1'>Liste des genres</h1>";
-$contenu = ob_get_clean(); //Fin de la vue 
-require "view/template.php";
+        $titre = "<h1 class='titreH1'>Liste des rôles</h1>";
+        $contenu = ob_get_clean(); //Fin de la vue 
+        require "view/template.php";
 
-?>
+        ?>
