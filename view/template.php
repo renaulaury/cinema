@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./public/css/listGenres.css">
     <link rel="stylesheet" href="./public/css/detFilms.css">
     <link rel="stylesheet" href="./public/css/addGal.css">
-    <link rel="stylesheet" href="./public/css/form.css">
+    <link rel="stylesheet" href="./public/css/formMQ.css">
     <link rel="stylesheet" href="./public/css/mediaQueries.css">
     <script src="./public/js/script_burger.js" defer></script>
     <script src="./public/js/carrousel.js" defer></script>

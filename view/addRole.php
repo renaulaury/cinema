@@ -17,7 +17,7 @@
 <?php
 
 
-$titre = "<h1 class='titreH1'>Ajout d'un genre</h1>";
+$titre = "<h1 class='titreH1'>Ajout d'un rôle</h1>";
 $contenu = ob_get_clean(); //Fin de la vue 
 require "view/template.php";
 

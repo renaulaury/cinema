@@ -40,11 +40,12 @@ class ActeurController
         $requete1->execute(["id" => $id]);
 
         $requete2 = $pdo->prepare("
-          SELECT  genre.id_genre, film.id_film,
+          SELECT DISTINCT genre.id_genre, film.id_film,
                 role.id_role,
  			    film.titre, 
 	            film.affiche, 
 	            role.personnage,
+                role.photo,
 			    GROUP_CONCAT(genre.libelle_genre) AS tous_genre 	      
             FROM film
             INNER JOIN casting ON film.id_film = casting.id_film
@@ -58,7 +59,7 @@ class ActeurController
 
         $requete2->execute(["id" => $id]);
 
-        require "view/addActeur.php";
+        require "view/detActeur.php";
     }
 
     public function addActeur()

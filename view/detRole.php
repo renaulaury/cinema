@@ -3,19 +3,42 @@
   ?> <!--Début de la vue -->
 
 
- <div>Info du film</div>
- <?php
-  foreach ($requete->fetchAll() as $role) { ?>
-   <p><?= $role["personnage"] ?></p>
-   <p><a href="index.php?action=detActeur&id=<?= $role["id_acteur"] ?>"><?= $role["name_actor"] ?></a></p>
-   <p><a href="index.php?action=detFilm&id=<?= $role["id_film"] ?>"><?= $role["titre"] ?></a></p>
-   <p><?= $role["tous_genre"] ?></p>
-   <p class="imgContain"><img class="img_aff" src="<?= $role["affiche"] ?>" alt="Affiche du film . $role['titre']" /></p>
+ <section class="sec">
+   <div class="part1">
+     <div class="infos">
+       <?php
+        foreach ($requete->fetchAll() as $role) { ?>
+
+         <h1><?= $role["personnage"] ?> </h1>
+         <p>Interprété par : <a href=" index.php?action=detActeur&id=<?= $role["id_acteur"] ?>"><?= $role["name_actor"] ?></a>
+     </div>
+
+     <div>
+       <p class="imgContain"><img class="img_pers" src="<?= $role['photo'] ?>" alt="Photo du personnage : <?= $role['personnage'] ?>" /></p>
+     </div>
+ </section>
+
+ <section>
+   <h2>Dans le film :</h2>
+   <div class="part1">
+     <div class="infos">
+       <p><a href=" index.php?action=detFilm&id=<?= $role["id_film"] ?>"><?= $role["titre"] ?></a></p>
+       <p><?= $role["tous_genre"] ?></p>
+     </div>
+
+     <p class="imgContain"><img class="img_aff" src="<?= $role["affiche"] ?>" alt="Affiche du film . $role['titre']" /></p>
+   </div>
+ </section>
+
+
 
  <?php } ?>
+
+
+
  <?php
 
-  $titre = "<h1 class='titreH1'>Role : </h1>";
+  $titre = "";
   $contenu = ob_get_clean(); //Fin de la vue 
   require "view/template.php";
 

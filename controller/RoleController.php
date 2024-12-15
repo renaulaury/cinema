@@ -13,7 +13,7 @@ class RoleController
         // $requete = $pdo->prepare("SELECT * FROM acteur WHERE id_acteur = :id"); //prepare car on dde l'id $id
         // $requete->execute(["id" => $id]);
         $requete = $pdo->query("
-            SELECT  role.id_role, personnage, photo              
+            SELECT  role.id_role, personnage, role.photo              
             FROM role
             ORDER BY personnage ASC
         ");

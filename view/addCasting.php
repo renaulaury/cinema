@@ -3,7 +3,7 @@
 
 <form action="index.php?action=addCasting" method="post">
         <section class="formSec">
-                <h2 class="addH2">Informations concernant le film</h2>
+                <h2 class="addH2">Titre du film</h2>
 
                 <div class="listName">
                         <select>
@@ -15,7 +15,7 @@
         </section>
 
         <section class="formSec">
-                <h2 class="addH2">Informations concernant les acteurs</h2>
+                <h2 class="addH2">Acteur</h2>
 
                 <div class="listName">
                         <select>
@@ -27,7 +27,7 @@
         </section>
 
         <section class="formSec">
-                <h2 class="addH2">Informations concernant les acteurs</h2>
+                <h2 class="addH2">Rôle interprété</h2>
 
                 <div class="listName">
                         <select>
