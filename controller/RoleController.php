@@ -13,8 +13,9 @@ class RoleController
         // $requete = $pdo->prepare("SELECT * FROM acteur WHERE id_acteur = :id"); //prepare car on dde l'id $id
         // $requete->execute(["id" => $id]);
         $requete = $pdo->query("
-            SELECT  role.id_role, personnage              
+            SELECT  role.id_role, personnage, photo              
             FROM role
+            ORDER BY personnage ASC
         ");
 
         require "view/listRoles.php";
@@ -51,9 +52,28 @@ class RoleController
         require "view/detRole.php"; //necessaire pour récuperer la vue qui nous intérésse
     }
 
+    public function addRole()
+    {
+        $pdo = Connect::seConnecter();
 
-    
+        if (isset($_POST['submit'])) {
+            $name = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if ($name) {
+                $requete = $pdo->prepare("
+            INSERT INTO role (personnage)
+            VALUES (:name)
+            ");
+
+                $requete->execute(["name" => $name]);
+
+                header("Location: index.php?action=listRole");
+                exit();
+            }
+        }
+
+        require "view/addRole.php";
+    }
 }
 
 // ensemble des requêtes 
-

@@ -1,36 +1,47 @@
 <?php ob_start() ?> <!--Début de la vue -->
 
 
-        <form action="index.php?action=addCasting" method="post">
-                
-                <p>Informations concernant le film</p>
-                        
-                        <select name="liste_film">
+<form action="index.php?action=addCasting" method="post">
+        <section class="formSec">
+                <h2 class="addH2">Informations concernant le film</h2>
+
+                <div class="listName">
+                        <select>
                                 <?php foreach ($req_film->fetchAll() as $film) { ?>
-                                <option value="<?= $film["id_film"] ?>"><?= $film["titre"] ?></option>
-                        <?php } ?>
+                                        <option value="<?= $film["id_film"] ?>"><?= $film["titre"] ?></option>
+                                <?php } ?>
                         </select>
-                        
+                </div>
+        </section>
 
-                <p>Informations concernant les acteurs</p>
+        <section class="formSec">
+                <h2 class="addH2">Informations concernant les acteurs</h2>
 
-                        <select name="liste_acteur">
+                <div class="listName">
+                        <select>
                                 <?php foreach ($req_acteur->fetchAll() as $actor) { ?>
-                                <option value="<?= $actor["id_acteur"] ?>"><?= $actor["name_acteur"] ?></option>
-                        <?php } ?>
+                                        <option value="<?= $actor["id_acteur"] ?>"><?= $actor["name_acteur"] ?></option>
+                                <?php } ?>
                         </select>
+                </div>
+        </section>
 
-                <p>Informations concernant les acteurs</p>
+        <section class="formSec">
+                <h2 class="addH2">Informations concernant les acteurs</h2>
 
-                        <select name="liste_role">
+                <div class="listName">
+                        <select>
                                 <?php foreach ($req_role->fetchAll() as $role) { ?>
-                                <option value="<?= $role["id_role"] ?>"><?= $role["personnage"] ?></option>
-                        <?php } ?>
+                                        <option value="<?= $role["id_role"] ?>"><?= $role["personnage"] ?></option>
+                                <?php } ?>
                         </select>
+                </div>
+        </section>
 
-
-                <input type="submit" name="submit" value="Valider">
-        </form>
+        <div class="validation">
+                <input class="validInput" type="submit" name="submit" value="Valider">
+        </div>
+</form>
 
 <?php
 

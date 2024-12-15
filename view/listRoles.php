@@ -3,7 +3,7 @@
 <div class="intro">
         <p>Il y a <?= $requete->rowCount() ?> roles.</p>
         <div class="group_btn">
-                <button onclick="window.location.href='index.php?action=addRole';">Ajouter un réalisateur</button>
+                <button onclick="window.location.href='index.php?action=addRole';">Ajouter un rôle</button>
         </div>
 </div>
 
@@ -14,7 +14,7 @@
                         <div class="text">
                                 <a href="index.php?action=detRole&id=<?= $role["id_role"] ?>"><?= $role["personnage"] ?></a></p>
                         </div>
-                        <p>Image</p>
+                        <p><img class="img_pers" src="<?= $role["photo"] ?>" alt="Photo de  . $role['photo']" /></p>
                 </div>
         <?php } ?>
 

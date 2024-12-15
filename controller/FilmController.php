@@ -21,9 +21,10 @@ class FilmController
         INNER JOIN genre_film ON film.id_film = genre_film.id_film
         INNER JOIN genre ON genre_film.id_genre = genre.id_genre
         GROUP BY film.id_film, film.titre
+        ORDER BY titre ASC
         ");
 
-       require "view/listFilms.php"; //necessaire pour récuperer la vue qui nous intérésse
+        require "view/listFilms.php"; //necessaire pour récuperer la vue qui nous intérésse
     }
 
     public function detFilm($id)
@@ -71,7 +72,7 @@ class FilmController
         $requete3->execute(["id" => $id]);
 
         require "view/detFilm.php"; //necessaire pour récuperer la vue qui nous intérésse
-    }   
+    }
 
     public function addFilm()
     {
@@ -88,8 +89,8 @@ class FilmController
             SELECT  genre.id_genre, libelle_genre               
             FROM genre
         ");
-        
-        if (isset($_POST['submit']))  {
+
+        if (isset($_POST['submit'])) {
             $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $dds_fr = filter_input(INPUT_POST, 'dds_fr', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $duree = filter_input(INPUT_POST, 'duree', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -98,45 +99,46 @@ class FilmController
             $url_affiche = filter_input(INPUT_POST, 'url_affiche', FILTER_VALIDATE_URL);
             $liste_real = filter_input(INPUT_POST, 'liste_real', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $genres = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-                        
-        if ($titre && $dds_fr && $duree && $textarea &&$note && $url_affiche && 
-        $liste_real && $genres) {      
-            $req_addFilmReal = $pdo->prepare("
+
+            if (
+                $titre && $dds_fr && $duree && $textarea && $note && $url_affiche &&
+                $liste_real && $genres
+            ) {
+                $req_addFilmReal = $pdo->prepare("
             INSERT INTO film (titre, date_sortie_fr, duree, synopsis, note, affiche, id_realisateur)
             VALUES (:titre, :dds_fr, :duree, :textarea, :note, :affiche, :id_realisateur)
-            ");        
+            ");
 
-            $req_addFilmReal->execute([
-                "titre" => $titre,
-                "dds_fr" => $dds_fr,
-                "duree" => $duree,
-                "textarea" => $textarea,
-                "note" => $note,
-                "affiche" => $url_affiche,
-                "id_realisateur" => $liste_real
+                $req_addFilmReal->execute([
+                    "titre" => $titre,
+                    "dds_fr" => $dds_fr,
+                    "duree" => $duree,
+                    "textarea" => $textarea,
+                    "note" => $note,
+                    "affiche" => $url_affiche,
+                    "id_realisateur" => $liste_real
                 ]);
-               
-            $idFilm = $pdo->lastInsertId();
 
-            $req_addGenreFilm = $pdo->prepare("
+                $idFilm = $pdo->lastInsertId();
+
+                $req_addGenreFilm = $pdo->prepare("
                             INSERT INTO genre_film (id_film, id_genre)
                             VALUES (:idFilm, :idGenre)
             ");
 
-            foreach ($genres as $genre) {
-               $req_addGenreFilm->execute([
-                "idFilm" => $idFilm, 
-                "idGenre" => $genre
-            ]);
-            }
+                foreach ($genres as $genre) {
+                    $req_addGenreFilm->execute([
+                        "idFilm" => $idFilm,
+                        "idGenre" => $genre
+                    ]);
+                }
 
 
-            header("Location: index.php?action=listFilms");
-            exit();
-            
+                header("Location: index.php?action=listFilms");
+                exit();
             }
-      }
-      require "view/addFilm.php";       
+        }
+        require "view/addFilm.php";
     }
 
     public function addCasting()
@@ -160,33 +162,31 @@ class FilmController
                     personnage
             FROM role
         ");
-        
-        if (isset($_POST['submit']))  {
-            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
+
+        if (isset($_POST['submit'])) {
+            $titre = filter_input(INPUT_POST, 'titre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $acteur = filter_input(INPUT_POST, 'name_acteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-            $role = filter_input(INPUT_POST, 'personnage', FILTER_SANITIZE_FULL_SPECIAL_CHARS); 
-            
-        if ($titre && $acteur && $role) {    
-            $req_casting = $pdo->prepare("
+            $role = filter_input(INPUT_POST, 'personnage', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            if ($titre && $acteur && $role) {
+                $req_casting = $pdo->prepare("
                 INSERT INTO casting (id_film, id_acteur, id_role)
                 VALUES (:id_film, :id_acteur, :id_role)    
             ");
 
-            $req_casting->execute([
-                "id_film" => $titre,
-                "id_acteur" => $acteur,
-                "id_role" => $role
-            ]);
-            
-            
-            header("Location: index.php?action=addCasting");
-            exit();
-            
+                $req_casting->execute([
+                    "id_film" => $titre,
+                    "id_acteur" => $acteur,
+                    "id_role" => $role
+                ]);
+
+
+                header("Location: index.php?action=addCasting");
+                exit();
             }
-      }
-      require "view/addCasting.php";       
+        }
+        require "view/addCasting.php";
     }
 }
 
 // ensemble des requêtes 
-

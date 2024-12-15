@@ -1,17 +1,17 @@
 <?php ob_start() ?> <!--Début de la vue -->
 
 
-<form action="index.php?action=addReal" method="post">
+<form action="index.php?action=addActeur" method="post">
         <section class="formSec">
                 <div class="blockNom">
                         <div class="formNom">
-                                <p class="formLabel"><label for="name_real">Nom :</label></p>
-                                <p><input type="text" id="name_real" name="name_real"></input></p>
+                                <p class="formLabel"><label for="name_acteur">Nom :</label></p>
+                                <p><input type="text" id="name_acteur" name="name_acteur"></input></p>
                         </div>
 
                         <div class="formNom">
-                                <p class="formLabel"><label for="firstname_real">Prénom :</label></p>
-                                <p><input type="text" id="firstname_real" name="firstname_real"></input></p>
+                                <p class="formLabel"><label for="firstname_acteur">Prénom :</label></p>
+                                <p><input type="text" id="firstname_acteur" name="firstname_acteur"></input></p>
                         </div>
                 </div>
         </section>
@@ -28,21 +28,21 @@
 
                                 <div class="radioSexe">
                                         <p><input type="radio" id="sexe_M" name="sexe" value="M" /></p>
-                                        <p><label for="sece_M">Homme</label></p>
+                                        <p><label for="sexe_M">Homme</label></p>
                                 </div>
                         </div>
                 </div>
 
                 <div class="formEncart formMini">
-                        <p class="formLabel"><label for="ddn_real">Date de naissance :</label></p>
-                        <p><input class="inputMini" type="date" id="ddn_real" name="ddn_real" placeholder="AAAAMMJJ"></input></p>
+                        <p class="formLabel"><label for="ddn_acteur">Date de naissance :</label></p>
+                        <p><input class="inputMini" type="date" id="ddn_acteur" name="ddn_acteur" placeholder="AAAAMMJJ"></input></p>
                 </div>
         </section>
 
         <section class="formSec">
                 <div class="formUrl">
-                        <p class="formLabel"><label for="url_real">Url du réalisateur :</label></p>
-                        <p><input type="text" id="url_real" name="url_real"></input></p>
+                        <p class="formLabel"><label for="url_acteur">Url de l'acteur :</label></p>
+                        <p><input type="text" id="url_acteur" name="url_acteur"></input></p>
                 </div>
         </section>
 
@@ -54,7 +54,7 @@
 <?php
 
 
-$titre = "<h1 class='titreH1'>Ajout d'un réalisateur </h1>";
+$titre = "<h1 class='titreH1'>Ajout d'un acteur </h1>";
 $contenu = ob_get_clean(); //Fin de la vue 
 require "view/template.php";
 

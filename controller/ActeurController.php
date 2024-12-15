@@ -19,6 +19,7 @@ class ActeurController
                 CONCAT(personne.prenom, ' ', personne.nom) AS name_actor
         FROM personne
         INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        ORDER BY personne.nom ASC
         ");
 
         require "view/listActeurs.php";
@@ -57,7 +58,52 @@ class ActeurController
 
         $requete2->execute(["id" => $id]);
 
-        require "view/detActeur.php";
+        require "view/addActeur.php";
+    }
+
+    public function addActeur()
+    {
+        $pdo = Connect::seConnecter();
+
+        if (isset($_POST['submit'])) {
+            $name_acteur = filter_input(INPUT_POST, 'name_acteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $firstname_acteur = filter_input(INPUT_POST, 'firstname_acteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $ddn_acteur = filter_input(INPUT_POST, 'ddn_acteur', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $url_acteur = filter_input(INPUT_POST, 'url_acteur', FILTER_VALIDATE_URL);
+
+
+            if ($name_acteur && $firstname_acteur && $sexe && $ddn_acteur && $url_acteur) {
+                $requete = $pdo->prepare("
+                INSERT INTO personne (nom, prenom, sexe, date_naissance, photo)
+                VALUES (:name_acteur, :firstname_acteur, :sexe, :ddn_acteur, :url_acteur)
+                ");
+
+                $requete->execute([
+                    "name_acteur" => $name_acteur,
+                    "firstname_acteur" => $firstname_acteur,
+                    "sexe" => $sexe,
+                    "ddn_acteur" => $ddn_acteur,
+                    "url_acteur" => $url_acteur
+                ]);
+
+                $idPersonne = $pdo->lastInsertId();
+
+                $requete1 = $pdo->prepare("
+                INSERT INTO acteur (id_personne)
+                VALUES (:idPersonne)
+                ");
+
+                $requete1->execute(["idPersonne" => $idPersonne]);
+
+
+
+                header("Location: index.php?action=listActeurs");
+                exit();
+            }
+        }
+
+        require "view/addActeur.php";
     }
 }
 

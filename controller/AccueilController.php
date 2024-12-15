@@ -17,7 +17,8 @@ class AccueilController
             synopsis,
             affiche,
             CONCAT(DAY(film.date_sortie_fr), '-', MONTH(film.date_sortie_fr), '-', YEAR(film.date_sortie_fr)) AS release_date
-        FROM film        
+        FROM film    
+        ORDER BY film.id_film DESC 
         LIMIT 5
         ");
 
@@ -27,6 +28,7 @@ class AccueilController
                 photo
         FROM personne
         INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
+        ORDER BY realisateur.id_realisateur DESC 
         LIMIT 5
         ");
 
@@ -36,6 +38,7 @@ class AccueilController
                 photo
         FROM personne
         INNER JOIN acteur ON personne.id_personne = acteur.id_personne
+        ORDER BY acteur.id_acteur DESC 
         LIMIT 5
         ");
 
@@ -44,4 +47,3 @@ class AccueilController
 }
 
 // ensemble des requêtes 
-

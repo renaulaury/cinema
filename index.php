@@ -1,6 +1,7 @@
 <?php
 
 /*use les controller*/
+
 use Controller\AccueilController;
 use Controller\FilmController;
 use Controller\RealController;
@@ -55,13 +56,16 @@ if (isset($_GET['action'])) {
             break;
         case "addReal":
             $ctrlReal->addReal();
-            break; 
+            break;
 
         case "listActeurs":
             $ctrlActeur->listActeurs();
             break;
         case "detActeur":
             $ctrlActeur->detActeur($id);
+            break;
+        case "addActeur":
+            $ctrlActeur->addActeur();
             break;
 
         case "listGenres":
@@ -80,7 +84,9 @@ if (isset($_GET['action'])) {
         case "detRole":
             $ctrlRole->detRole($id);
             break;
-
+        case "addRole":
+            $ctrlRole->addRole($id);
+            break;
     }
 }
 

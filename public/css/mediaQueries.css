@@ -1,0 +1,31 @@
+@media (max-width: 1241px) {
+.princ, .gpGenre {
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+}
+}
+
+@media (max-width: 720px) { /*logo*/
+    .princ, .gpGenre {
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: auto;
+    }
+}
+
+@media (max-width: 520px) { /*logo*/
+    .princ, .gpGenre {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .gpGenre {
+        grid-template-columns: repeat(1,1fr);
+        grid-template-rows: auto;
+        gap: 0.5%;
+        min-height: 100vh;
+    }
+
+    .genre {
+        padding: 8%;
+    }
+}

@@ -1,7 +1,22 @@
+.gpGenre {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 5%;
+}
+
+.nomGenre {
+    text-align: center;
+}
+
 .genre {
-    width: 50%;
+    display: inline-block;
+    width: 80%;
     color: #1e1e1e;
     background-color: whitesmoke;
     padding: 10% 0;
     border-radius: 10px;
+    text-align: center;    
 }

@@ -3,30 +3,30 @@
 <div class="intro">
         <p>Il y a <?= $requete->rowCount() ?> acteurs.</p>
         <div class="group_btn">
-      <button onclick="window.location.href='index.php?action=addActeur';">Ajouter un film / A faire</button>
-  </div>
- </div>
+                <button onclick="window.location.href='index.php?action=addActeur';">Ajouter un acteur</button>
+        </div>
+</div>
 
- <section class="princ">
-<?php
-foreach ($requete->fetchAll() as $actor) { ?>
-        <div class="group">
-                <div class="text">
+<section class="princ">
+        <?php
+        foreach ($requete->fetchAll() as $actor) { ?>
+                <div class="group">
+                        <div class="text">
+                                <p>
+                                        <a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a>
+                                </p>
+                        </div>
                         <p>
-                                <a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a>
+                                <img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
                         </p>
                 </div>
-        <p>
-                <img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
-        </p>
-        </div>
-<?php } ?>
+        <?php } ?>
 
 
-<?php
+        <?php
 
-$titre = "<h1 class='titreH1'>Liste des acteurs</h1>";
-$contenu = ob_get_clean(); //Fin de la vue 
-require "view/template.php";
+        $titre = "<h1 class='titreH1'>Liste des acteurs</h1>";
+        $contenu = ob_get_clean(); //Fin de la vue 
+        require "view/template.php";
 
-?>
+        ?>

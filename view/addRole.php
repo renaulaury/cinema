@@ -1,11 +1,11 @@
 <?php ob_start() ?> <!--Début de la vue -->
 
 
-<form action="index.php?action=addGenre" method="post">
+<form action="index.php?action=addRole" method="post">
         <section class="formSec">
                 <div class="formSolo">
-                        <p>Genre :</p>
-                        <p class="inputSolo"><input type="text" id="genre" name="genre"></input></p>
+                        <p>Rôle :</p>
+                        <p class="inputSolo"><input type="text" id="role" name="role"></input></p>
                 </div>
         </section>
 

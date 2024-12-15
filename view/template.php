@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="./public/css/detGal.css">
     <link rel="stylesheet" href="./public/css/listGenres.css">
     <link rel="stylesheet" href="./public/css/detFilms.css">
-    <link rel="stylesheet" href="./public/css/addFilm.css">
+    <link rel="stylesheet" href="./public/css/addGal.css">
+    <link rel="stylesheet" href="./public/css/mediaQueries.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Ciné Sphery</title>

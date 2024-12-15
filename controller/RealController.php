@@ -18,6 +18,7 @@ class RealController
                 CONCAT(personne.prenom, ' ', personne.nom) AS name_real                
         FROM personne
         INNER JOIN realisateur ON personne.id_personne = realisateur.id_personne
+        ORDER BY personne.nom ASC
         ");
 
 
@@ -56,12 +57,12 @@ class RealController
         require "view/detReal.php";
     }
 
-    
+
     public function addReal()
     {
         $pdo = Connect::seConnecter();
 
-       if (isset($_POST['submit']))  {
+        if (isset($_POST['submit'])) {
             $name_real = filter_input(INPUT_POST, 'name_real', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $firstname_real = filter_input(INPUT_POST, 'firstname_real', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $sexe = filter_input(INPUT_POST, 'sexe', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -75,11 +76,13 @@ class RealController
                 VALUES (:name_real, :firstname_real, :sexe, :ddn_real, :url_real)
                 ");
 
-                $requete->execute(["name_real" => $name_real,
-                                "firstname_real" => $firstname_real, 
-                                "sexe" => $sexe,
-                                "ddn_real" => $ddn_real, 
-                                "url_real" => $url_real]);
+                $requete->execute([
+                    "name_real" => $name_real,
+                    "firstname_real" => $firstname_real,
+                    "sexe" => $sexe,
+                    "ddn_real" => $ddn_real,
+                    "url_real" => $url_real
+                ]);
 
                 $idPersonne = $pdo->lastInsertId();
 
@@ -90,18 +93,15 @@ class RealController
 
                 $requete1->execute(["idPersonne" => $idPersonne]);
 
-                
+
 
                 header("Location: index.php?action=listReals");
                 exit();
             }
-       }
+        }
 
-       require "view/addReal.php";
+        require "view/addReal.php";
     }
-
-
 }
 
 // ensemble des requêtes 
-

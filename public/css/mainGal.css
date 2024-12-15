@@ -1,7 +1,7 @@
 .princ {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(auto, 1fr);
+    grid-template-rows: 1fr;
     gap: 30px 10px;
 }
 
@@ -37,11 +37,6 @@ a:hover {
     padding: 3% 0 5% 0;
 }
 
-input, button, select, option, textarea {
-    font-family: 'Rockwell', arial;
-    padding:1%;
-    border-radius: 10px;
-    color:#1e1e1e;
-}
+
 
 

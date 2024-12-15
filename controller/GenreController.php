@@ -21,12 +21,12 @@ class GenreController
         require "view/listGenres.php";
     }
 
-    
+
     public function detGenre($id)
     {
         $pdo = Connect::seConnecter();
         $requete = $pdo->prepare("
-            SELECT  film.id_film, titre, affiche
+            SELECT DISTINCT film.id_film, titre, affiche, genre.libelle_genre
             FROM film
             INNER JOIN genre_film ON film.id_film = genre_film.id_film
             INNER JOIN genre ON genre_film.id_genre = genre.id_genre
@@ -34,6 +34,13 @@ class GenreController
         ");
         $requete->execute(["id" => $id]);
 
+        $requeteGenre = $pdo->prepare("
+        SELECT libelle_genre 
+        FROM genre
+        WHERE id_genre = :id
+    ");
+        $requeteGenre->execute(["id" => $id]);
+        $genre = $requeteGenre->fetch();
 
         require "view/detGenre.php"; //necessaire pour récuperer la vue qui nous intérésse
     }
@@ -42,28 +49,24 @@ class GenreController
     {
         $pdo = Connect::seConnecter();
 
-       if (isset($_POST['submit']))  {
-        $name = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if (isset($_POST['submit'])) {
+            $name = filter_input(INPUT_POST, 'genre', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-        if ($name) {
-            $requete = $pdo->prepare("
+            if ($name) {
+                $requete = $pdo->prepare("
             INSERT INTO genre (libelle_genre)
             VALUES (:name)
             ");
 
-        $requete->execute(["name" => $name]);
+                $requete->execute(["name" => $name]);
 
-        header("Location: index.php?action=listGenres");
-        exit();
+                header("Location: index.php?action=listGenres");
+                exit();
+            }
         }
-       }
 
-       require "view/addGenre.php";
+        require "view/addGenre.php";
     }
-
-   
-    
 }
 
 // ensemble des requêtes 
-
