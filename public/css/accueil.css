@@ -6,22 +6,30 @@ main {
     position: relative;
     width: 100%;
     overflow: hidden; /* Cache les images hors du cadre visible */
-    border: 2px solid #ddd;    
     display: flex;
     align-items: center; /* Centre les boutons dans la hauteur du carrousel */
-    background-color: aliceblue;
+    background: 
+    radial-gradient(
+        closest-side, /* Concentre le dégradé dans un carré */
+        rgba(217, 217, 217, 1) 0%, /* Couleur claire au centre */
+        rgba(217, 217, 217, 0.8) 20%, /* Estompe plus rapidement */
+        rgba(30, 30, 30, 0.66) 80%, /* Noir semi-transparent commence plus tôt */
+        rgba(30, 30, 30, 1) 100% /* Noir opaque sur les bords */
+    );
 }
+
 
 .carrousel-images {
     display: flex;
     transition: transform 0.5s ease-in-out; /* Animation fluide */
 }
 
+
+
 .carrousel-images img {
     height: auto; /* Garde les proportions originales de l'image */
     width: 20%; /* Les images occupent 100% de la largeur du conteneur */
     flex-shrink: 0; /* Empêche la réduction des images */    
-   
 }
 
 .carrousel-item {
@@ -34,7 +42,7 @@ main {
 /* Boutons prev/next */
 button.prev, button.next {
     position: absolute;
-    top: 30%; /* Positionner les boutons au centre verticalement */
+    top: 50%; /* Positionner les boutons au centre verticalement */
     transform: translateY(-50%); /* Ajuste le centrage */
     background-color: rgba(0, 0, 0, 0.5);    
     color: white;
