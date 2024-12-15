@@ -1,0 +1,25 @@
+@media (max-width: 1241px) {
+    form {
+        width: 70%;
+    }
+    }
+    
+    @media (max-width: 720px) { 
+        form {
+            width: 100%;
+        }
+       
+    
+        
+    }
+    
+    @media (max-width: 520px) { 
+         .listGernre {
+            width:100%;
+         }
+        
+        
+       
+    }
+    
+    
