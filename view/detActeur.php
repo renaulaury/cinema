@@ -25,7 +25,7 @@
             foreach ($requete2->fetchAll() as $info) { ?>
              <div class="groupInfo">
                 <p><a href="index.php?action=detFilm&id=<?= $info["id_film"] ?>"><?= $info["titre"] ?></a></p>
-                <p><img class="img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
+                <p class="imgContain"><img class="img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
              </div>
 
              <p>--------- ></p>

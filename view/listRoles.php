@@ -14,7 +14,7 @@
                         <div class="text">
                                 <a href="index.php?action=detRole&id=<?= $role["id_role"] ?>"><?= $role["personnage"] ?></a></p>
                         </div>
-                        <p><img class="img_pers" src="<?= $role["photo"] ?>" alt="Photo de  . $role['photo']" /></p>
+                        <p class="imgContain"><img class="img_pers" src="<?= $role["photo"] ?>" alt="Photo de  . $role['photo']" /></p>
                 </div>
         <?php } ?>
 

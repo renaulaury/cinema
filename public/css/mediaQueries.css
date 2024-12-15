@@ -1,3 +1,4 @@
+
 @media (max-width: 1241px) {
 .princ, .gpGenre {
     grid-template-columns: repeat(3,1fr);
@@ -5,14 +6,28 @@
 }
 }
 
-@media (max-width: 720px) { /*logo*/
+@media (max-width: 720px) { 
+    nav img {
+        width: 90%;
+        height: auto;
+    }
+
+    nav a {
+        font-size: 0.8em;
+    }
+
     .princ, .gpGenre {
         grid-template-columns: repeat(2,1fr);
         grid-template-rows: auto;
     }
 }
 
-@media (max-width: 520px) { /*logo*/
+@media (max-width: 520px) { 
+    nav img {
+        width: 100%;
+        height: auto;
+    }
+
     .princ, .gpGenre {
         grid-template-columns: 1fr;
         grid-template-rows: auto;
@@ -28,4 +43,76 @@
     .genre {
         padding: 8%;
     }
+
+
+    nav {        
+        padding-bottom: 45%;
+    }
+
+    nav img {
+        margin-bottom: 60%;
+    }
+
+    nav li {
+        padding: 13%;
+    }
+
+    .realNorm {
+        display: none;
+    }
+
+    .realMQ {
+        display: block;
+    }
+
+    /*burger*/
+    .burger_button {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        cursor: pointer;
+        padding-right: 5%;
+    }
+    
+    .burger_button .line {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .burger_button.open .line:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .burger_button.open .line:nth-child(2) {
+        opacity: 0;
+    }
+    .burger_button.open .line:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+    
+    /* Menu déroulant */
+    ol {
+        display: none;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 21%;
+        left: 0%;
+        background: linear-gradient(to right, #d9d9d9 0%, #1e1e1e 66%);
+        border-bottom-right-radius: 30px;
+   }
+    
+    ol.open {
+        display: flex;
+        padding: 0;
+        width: 20%;
+    }
+    
+    ol li {
+        margin-left: 5%;
+        width: 100%;
+    }
+   
 }
+

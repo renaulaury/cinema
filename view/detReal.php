@@ -9,7 +9,7 @@
        <p><?= $real["name_real"] ?></p>
        <p>Né(e) le <?= $real["birth_date"] ?></p>
      </div>
-     <div>
+     <div class="imgContain">
        <img class="img_pers" src="<?= $real["photo"] ?>" alt="Photo de  . $real['photo']" />
      </div>
    </div>
@@ -27,7 +27,7 @@
          <div class="groupInfo">
            <p><a href="index.php?action=detReal&id=<?= $info["id_film"] ?>"><?= $info["titre"] ?></a></p>
            <p><?= $info["tous_genre"] ?></p>
-           <p><img class="img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $info['titre']" /></p>
+           <p class="imgContain"><img class="img_aff" src="<?= $info["affiche"] ?>" alt="Affiche du film . $info['titre']" /></p>
          </div>
        <?php } ?>
        <?php

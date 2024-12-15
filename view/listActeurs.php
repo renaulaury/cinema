@@ -16,7 +16,7 @@
                                         <a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a>
                                 </p>
                         </div>
-                        <p>
+                        <p class="imgContain">
                                 <img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" />
                         </p>
                 </div>

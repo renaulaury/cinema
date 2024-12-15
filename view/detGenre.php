@@ -9,7 +9,7 @@
       foreach ($requete->fetchAll() as $film) { ?>
        <div class="groupInfo">
          <p><a href="index.php?action=detFilm&id=<?= $film["id_film"] ?>"><?= $film["titre"] ?></a></p>
-         <p><img class="img_aff" src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
+         <p class="imgContain"><img class="img_aff" src="<?= $film["affiche"] ?>" alt="Affiche du film . $film['titre']" /></p>
        </div>
      <?php } ?>
    </div>

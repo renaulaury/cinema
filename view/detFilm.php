@@ -41,7 +41,7 @@
    <div class="secTer">
      <div class="groupReal">
        <p><a href="index.php?action=detReal&id=<?= $film["id_realisateur"] ?>"><?= $film["name_real"] ?></a></p>
-       <p><img class="img_pers" src="<?= $film["photo"] ?>" alt="Photo de  . $film['photo']" /></p>
+       <p class="imgContain"><img class="img_pers" src="<?= $film["photo"] ?>" alt="Photo de  . $film['photo']" /></p>
      </div>
    </div>
  </section>
@@ -53,16 +53,19 @@
      <div class="secQuart">
        <?php
         foreach ($requete3->fetchAll() as $actor) { ?>
-         <div class="groupInfo">
-           <p><a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a> </p>
-           <p><img class="img_pers" src="<?= $actor["photo"] ?>" alt="Photo de  . $actor['photo']" /></p>
-         </div>
+         <div class="acteurRole">
+           <div class="groupInfo">
+             <p><a href="index.php?action=detActeur&id=<?= $actor["id_acteur"] ?>"><?= $actor["name_actor"] ?></a> </p>
+             <p class="imgContain"><img class="img_pers" src="<?= $actor["photoP"] ?>" alt="Photo de  . $actor['photo']" /></p>
+           </div>
 
-         <p>--------- ></p>
+           <p>--------- ></p>
 
-         <div class="groupInfo">
-           <p><a href="index.php?action=detRole&id=<?= $actor["id_role"] ?>"><?= $actor["personnage"] ?></a> </p>
-           <p>Image role</p>
+           <div class="groupInfo">
+             <p><a href="index.php?action=detRole&id=<?= $actor["id_role"] ?>"><?= $actor["personnage"] ?></a> </p>
+             <p class="imgContain"><img class="img_pers" src="<?= $actor["photoR"] ?>" alt="Photo de  . $actor['personnage']" /></p>
+             <p>Image role</p>
+           </div>
          </div>
        <?php } ?>
      </div>

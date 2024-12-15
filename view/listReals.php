@@ -14,10 +14,10 @@
                         <div class="text">
                                 <p><a href="index.php?action=detReal&id=<?= $real["id_realisateur"] ?>"><?= $real["name_real"] ?></a></p>
                         </div>
-                        <p><img class="img_pers" src="<?= $real["photo"] ?>" alt="Photo de  . $real['photo']" /></p>
+                        <p class="imgContain"><img class="img_pers" src="<?= $real["photo"] ?>" alt="Photo de  . $real['photo']" /></p>
                 </div>
         <?php } ?>
-        </section>
+</section>
 
 
 

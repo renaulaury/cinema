@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./public/css/detFilms.css">
     <link rel="stylesheet" href="./public/css/addGal.css">
     <link rel="stylesheet" href="./public/css/mediaQueries.css">
+    <script src="./public/js/script_burger.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Ciné Sphery</title>
@@ -25,10 +26,18 @@
         <header>
             <nav>
                 <img src="./public/img/logo_cinema.png" alt="Logo de l'entreprise Ciné Sphéry">
+
+                <div class="burger_button">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+
                 <ol>
                     <li><a href="index.php?action=accueil">Accueil</a></li>
                     <li><a href="index.php?action=listFilms">Films</a></li>
-                    <li><a href="index.php?action=listReals">Réalisateurs</a></li>
+                    <li class="realNorm"><a href="index.php?action=listReals">Réalisateurs</a></li>
+                    <li class="realMQ"><a href="index.php?action=listReals">Réals</a></li>
                     <li><a href="index.php?action=listActeurs">Acteurs</a></li>
                     <li><a href="index.php?action=listGenres">Genres</a></li>
                     <li><a href="index.php?action=listRoles">Rôles</a></li>

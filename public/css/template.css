@@ -62,7 +62,29 @@ nav ol {
 nav li {
     padding: 25% 0;
     height: 10%;
-}  
+} 
+
+.realMQ {
+    display:none;
+}
+
+/*burger*/
+.burger_button {
+    display: none;
+}
+
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+}
 
 /*main template*/
 main {
@@ -80,10 +102,15 @@ footer {
     font-size: 0.8em;
     background: linear-gradient(to top, #d9d9d9 0%, #1e1e1e 66%);
     text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 .fa-heart {
     color: rgb(236, 13, 50);
 }
+
+
 
 

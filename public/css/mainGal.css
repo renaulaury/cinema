@@ -5,11 +5,22 @@
     gap: 30px 10px;
 }
 
+.imgContain {
+    height: 220px; 
+    overflow: hidden; /* Empêche l'image de déborder */
+    position: relative; /* Nécessaire pour que l'effet de zoom fonctionne correctement */
+}
+
 .img_aff, .img_pers {
     height: 220px;
-    width : 160px;
-    object-fit:fill;
-    padding-top: 5%;
+    width : 160px; 
+    object-fit:cover;
+    padding-top: 10%; 
+    transition: transform 0.3s ease-in-out;
+}
+
+.img_aff:hover, .img_pers:hover {
+    transform: scale(1.1); /* Zoomer à 110% de la taille de l'image */
 }
 
 .group {
