@@ -117,7 +117,7 @@ textarea {
 }
 
 .formNom input {
-    width: 80%;
+    width: 90%;
     padding: 3%;
 }
 
@@ -135,7 +135,7 @@ textarea {
 }
 
 .titreSexe {
-    width:15%;
+    width:35%;
 }
 
 .radioSexe {
@@ -145,6 +145,14 @@ textarea {
 
 .radioSexe label {
     padding-left: 10%;
+}
+
+.ddnR {
+    width:80%;
+}
+
+.urlR {
+    width: 95%;
 }
 
 .formSolo {

@@ -33,15 +33,15 @@
                         </div>
                 </div>
 
-                <div class="formEncart formMini">
+                <div class="formEncart formMini ddnR">
                         <p class="formLabel"><label for="ddn_real">Date de naissance :</label></p>
                         <p><input class="inputMini" type="date" id="ddn_real" name="ddn_real" placeholder="AAAAMMJJ"></input></p>
                 </div>
         </section>
 
         <section class="formSec">
-                <div class="formUrl">
-                        <p class="formLabel"><label for="url_real">Url du réalisateur :</label></p>
+                <div class="formUrl urlR">
+                        <p class="formLabel "><label for="url_real">Url du réalisateur :</label></p>
                         <p><input type="text" id="url_real" name="url_real"></input></p>
                 </div>
         </section>

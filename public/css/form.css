@@ -2,22 +2,59 @@
     form {
         width: 70%;
     }
+
+
     }
     
     @media (max-width: 720px) { 
         form {
             width: 100%;
         }
-       
-    
-        
+
+        .listGernre {
+            width:100%;
+            
+         }
+
+         .ddnR {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr);            
+            text-align: center;
+         }
     }
     
     @media (max-width: 520px) { 
-         .listGernre {
-            width:100%;
-         }
+        h1 {
+            padding-top: 5%;
+        }
         
+        section {
+            padding-top: 10%;
+        }
+         .listGenre {
+            width:100%;            
+         }     
+
+         .blockNom{
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr); 
+            gap: 30px;
+         }
+
+         .sexeDdn{
+            padding-top: 0;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr); 
+         }
+
+         .formSexe, .ddnR{
+            align-items: center;
+            justify-content: center;
+         }
+
+         .validation {
+            padding: 3%;
+         }
         
        
     }
