@@ -19,7 +19,7 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.img_aff:hover, .img_pers:hover {
+.img_aff:hover, .img_pers:hover, .img_aff_car:hover{
     transform: scale(1.1); /* Zoomer à 110% de la taille de l'image */
 }
 

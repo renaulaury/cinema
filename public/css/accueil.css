@@ -1,3 +1,86 @@
+main {
+    padding-top: 0;
+}
+/* Carrousel */
+.carrousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Cache les images hors du cadre visible */
+    border: 2px solid #ddd;    
+    display: flex;
+    align-items: center; /* Centre les boutons dans la hauteur du carrousel */
+    background-color: aliceblue;
+}
+
+.carrousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out; /* Animation fluide */
+}
+
+.carrousel-images img {
+    height: auto; /* Garde les proportions originales de l'image */
+    width: 20%; /* Les images occupent 100% de la largeur du conteneur */
+    flex-shrink: 0; /* Empêche la réduction des images */    
+   
+}
+
+.carrousel-item {
+    min-width: 100%; /* Une seule image visible à la fois */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Boutons prev/next */
+button.prev, button.next {
+    position: absolute;
+    top: 30%; /* Positionner les boutons au centre verticalement */
+    transform: translateY(-50%); /* Ajuste le centrage */
+    background-color: rgba(0, 0, 0, 0.5);    
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    z-index: 2; /* Les boutons restent au-dessus des images */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+button.prev {
+    left: 1%; /* Position à gauche */
+}
+
+button.next {
+    right: 1%; /* Position à droite */
+}
+
+button.prev:hover, button.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Image du carrousel */
+.img_aff_car {
+    height: 280px;
+    width: 200px;
+    padding: 0;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+
+  
+
+/*Accueil*/
+.marginCarrousel {
+    padding-top: 10%;
+}
+
 .section_acc {
     padding-bottom: 10%; 
 }

@@ -5,6 +5,33 @@ ob_start();
 
 <!-- <p><img src="./public/img/image_princ.jpg" alt="Image principale" /></p>  -->
 
+<section class="carrousel">
+    <div class="carrousel-images">
+        <?php
+        // Parcourt les films récupérés depuis la requête
+        foreach ($carrousel->fetchAll() as $info) { ?>
+            <div class="carrousel-item">
+                <img class="img_aff_car" src="<?= $info['affiche'] ?>" alt="Affiche de <?= $info['titre'] ?>">
+                <!-- </a> -->
+            </div>
+        <?php } ?>
+    </div>
+
+    <!-- Boutons pour naviguer dans le carrousel -->
+    <button class="prev">⟨</button>
+    <button class="next">⟩</button>
+</section>
+
+<?php
+$titre = ob_get_clean();
+?>
+
+<?php
+ob_start();
+
+?>
+
+<h1 class='titreH1 marginCarrousel'>Accueil</h1>
 
 <section class="section_acc">
     <h2 class="titre_acc">Films</h2>
@@ -55,7 +82,7 @@ ob_start();
 
 <?php
 
-$titre = "<h1 class='titreH1'>Accueil</h1>";
+
 $contenu = ob_get_clean(); //Fin de la vue 
 require "view/template.php";
 

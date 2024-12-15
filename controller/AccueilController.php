@@ -10,7 +10,8 @@ class AccueilController
     public function accueil()
     {
         $pdo = Connect::seConnecter();
-        $requete = $pdo->query("
+
+        $carrousel = $pdo->query("
         SELECT  		
             film.id_film, 
             film.titre, 
@@ -19,6 +20,18 @@ class AccueilController
             CONCAT(DAY(film.date_sortie_fr), '-', MONTH(film.date_sortie_fr), '-', YEAR(film.date_sortie_fr)) AS release_date
         FROM film    
         ORDER BY film.id_film DESC 
+        LIMIT 3
+        ");
+
+        $requete = $pdo->query("
+        SELECT  		
+            film.id_film, 
+            film.titre, 
+            synopsis,
+            affiche,
+            CONCAT(DAY(film.date_sortie_fr), '-', MONTH(film.date_sortie_fr), '-', YEAR(film.date_sortie_fr)) AS release_date
+        FROM film    
+        ORDER BY film.id_film ASC
         LIMIT 5
         ");
 
