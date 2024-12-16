@@ -87,8 +87,11 @@ if (isset($_GET['action'])) {
         case "addRole":
             $ctrlRole->addRole($id);
             break;
+    } 
+} else {
+        $ctrlAccueil->accueil();
     }
-}
+
 
 ?>
 
