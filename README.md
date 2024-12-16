@@ -8,12 +8,13 @@ Le projet permet de gérer une base de données sur les films, acteurs, réalisa
 Ce projet a été créé dans le cadre d’un exercice de développement web pour démontrer des compétences en architecture logicielle et en gestion des données. 🌟
 🌟 Fonctionnalités principales
 🔍 Gestion des entités
-
     🎞️ Films : Ajout, modification, suppression, et consultation.
     👤 Acteurs : Liste des acteurs et gestion de leurs rôles dans les films.
     🎥 Réalisateurs : Attribution et gestion des réalisateurs pour chaque film.
     📂 Genres : Organisation des films par genres.
     🎭 Rôles : Définition et gestion des rôles attribués aux acteurs.
+
+
 
 🛠️ Formulaires interactifs
 
