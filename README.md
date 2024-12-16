@@ -7,6 +7,9 @@ Cinésphery est une application web construite dans un cadre MVC (Modèle-Vue-Co
 
 Ce projet a été créé dans le cadre d’un exercice de développement web pour démontrer des compétences en architecture logicielle et en gestion des données. 🌟
 🌟 Fonctionnalités principales
+    - 🎞️ Films : Ajout, modification, suppression, et consultation.
+    - 👤 Acteurs : Liste des acteurs et gestion de leurs rôles dans les films.
+    - 🎥 Réalisateurs : Attribution et gestion des réalisateurs pour chaque film.
 
     🎞️ Films : Ajout, modification, suppression, et consultation.
     👤 Acteurs : Liste des acteurs et gestion de leurs rôles dans les films.
