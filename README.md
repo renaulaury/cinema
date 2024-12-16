@@ -1,24 +1,17 @@
-Voici une version du README rédigée pour éviter les problèmes de mise en forme lors du copier-coller :
 🎥 Cinésphery
 ✨ Description
 
 Cinésphery est une application web construite dans un cadre MVC (Modèle-Vue-Contrôleur). 
-🎬Le projet permet de gérer une base de données sur les films, acteurs, réalisateurs, genres et rôles, avec des formulaires faciles à utiliser pour simplifier vos tâches.
+🎬 Le projet permet de gérer une base de données sur les films, acteurs, réalisateurs, genres et rôles, avec des formulaires faciles à utiliser pour simplifier vos tâches.
 
 Ce projet a été créé dans le cadre d’un exercice de développement web pour démontrer des compétences en architecture logicielle et en gestion des données. 🌟
 🌟 Fonctionnalités principales
-    - 🎞️ Films : Ajout, modification, suppression, et consultation.
-    - 👤 Acteurs : Liste des acteurs et gestion de leurs rôles dans les films.
-    - 🎥 Réalisateurs : Attribution et gestion des réalisateurs pour chaque film.
 
     🎞️ Films : Ajout, modification, suppression, et consultation.
     👤 Acteurs : Liste des acteurs et gestion de leurs rôles dans les films.
     🎥 Réalisateurs : Attribution et gestion des réalisateurs pour chaque film.
     📂 Genres : Organisation des films par genres.
-    🎭 Rôles : Définition et gestion des rôles attribués aux acteurs.
-   
-
-
+    🎭 Rôles : Définition et gestion des rôles attribués aux acteurs. 
 
 🛠️ Formulaires interactifs
 
