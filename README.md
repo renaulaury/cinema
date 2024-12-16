@@ -29,7 +29,7 @@ Ce projet a été créé dans le cadre d’un exercice de développement web pou
 
     Back-end : PHP avec architecture MVC.
     Front-end : HTML, CSS, JavaScript.
-    Base de données : HeidiSQL pour stocker toutes les entités.
+    Base de données : mySQL pour stocker toutes les entités.
 
 👨‍💻 Auteur
 
