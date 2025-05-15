@@ -9,7 +9,8 @@ class FilmController
 {
     public function listFilms()
     {
-        $pdo = Connect::seConnecter();
+        // Connexion à la base de données via la classe Connect
+        $pdo = Connect::seConnecter();        
         $requete = $pdo->query("
           SELECT  		
             film.id_film, 
@@ -28,7 +29,7 @@ class FilmController
     }
 
     public function detFilm($id)
-    {
+    {<
         $pdo = Connect::seConnecter();
         $requete1 = $pdo->prepare("
         SELECT film.id_film,
