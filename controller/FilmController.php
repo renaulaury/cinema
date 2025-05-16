@@ -29,7 +29,7 @@ class FilmController
     }
 
     public function detFilm($id)
-    {<
+    {
         $pdo = Connect::seConnecter();
         $requete1 = $pdo->prepare("
         SELECT film.id_film,
